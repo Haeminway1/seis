@@ -2,7 +2,7 @@
 
 **SEIS**는 *Standard English Item Schema*, 즉 **표준 영어 문항 규격**입니다. 규격 ID는 `seis/v1`입니다.
 
-> 규격의 유일한 권위는 [`schema.json`](./schema.json)입니다. 구조 규칙은 표준 JSON Schema 키로, 문서 간 참조·마커 위치·정답 연결 규칙은 `x-seis-invariants`로 선언됩니다. [`validator.py`](./validator.py)는 그 불변량을 실행하는 공식 참조 검증기입니다. 이 문서와 구현이 다르면 `schema.json`이 맞습니다.
+> 규격의 유일한 권위는 [`schema.json`](../schema/seis-v1.schema.json)입니다. 구조 규칙은 표준 JSON Schema 키로, 문서 간 참조·마커 위치·정답 연결 규칙은 `x-seis-invariants`로 선언됩니다. [`seis_validate.py`](../tools/seis_validate.py)는 그 불변량을 실행하는 공식 참조 검증기입니다. 이 문서와 구현이 다르면 `schema.json`이 맞습니다.
 
 ## 1. 한 문서가 담는 범위
 
@@ -126,8 +126,8 @@ PDF의 시각적 빈칸처럼 지문 문자열에 대응되는 글자가 없으�
 SEIS의 유형 판정은 코드 이름만으로 하지 않습니다. 다음 세 권위를 함께 사용합니다.
 
 1. `schema.json`: 문항·지문·마커·보기·정답의 공통 구조
-2. `catalog/item-types/v1/registered-v3-snapshot.json`과 `candidate-overlay.json`: 유형 코드의 등록 상태와 provenance
-3. `catalog/generation-guides/v1/gpa-english-item-types.json`: 유형별 판정·생성·표시·제외 계약
+2. [`profiles/ko-highschool-english/v1/status.json`](../profiles/ko-highschool-english/v1/status.json)과 [`aliases.json`](../profiles/ko-highschool-english/v1/aliases.json): 유형 코드의 등록 상태와 표기 변형
+3. [`profiles/ko-highschool-english/v1/item-types.json`](../profiles/ko-highschool-english/v1/item-types.json): 유형별 판정·생성·표시·제외 계약
 
 - 등록 유형: `"type_status": "registered"`
 - 검토 중 확장 유형: `"type_status": "candidate"`
@@ -165,6 +165,5 @@ SEIS의 유형 판정은 코드 이름만으로 하지 않습니다. 다음 세 
 
 ## 11. 예시
 
-- 정상 빈칸: [`../../examples/valid/blank-item.json`](../../examples/valid/blank-item.json)
-- 정상 공유 지문·마커: [`../../examples/valid/shared-passage-markers.json`](../../examples/valid/shared-passage-markers.json)
-- 거부 예시: [`../../examples/invalid/`](../../examples/invalid/)
+- 기본 예시: [`examples/minimal.seis.json`](../examples/minimal.seis.json)
+- 시험용으로 변형된 지문(`integrity`): [`examples/modified-passage.seis.json`](../examples/modified-passage.seis.json)

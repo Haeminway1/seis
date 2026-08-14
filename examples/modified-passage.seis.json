@@ -1,0 +1,160 @@
+{
+  "schema_id": "seis/v1",
+  "exam": {
+    "id": "SEIS_EXAMPLE_02",
+    "domain": "english",
+    "title": "SEIS 예시 — 시험용으로 변형된 지문",
+    "metadata": {
+      "note": "All passages written for this repository. No third-party text."
+    }
+  },
+  "sources": [
+    {
+      "id": "src_problem",
+      "role": "problem",
+      "locator": "examples/minimal.seis.json"
+    },
+    {
+      "id": "src_answer",
+      "role": "answer",
+      "locator": "examples/minimal.seis.json"
+    }
+  ],
+  "passages": [
+    {
+      "id": "psg_trees",
+      "text": "A city that plants trees along its streets is not only making itself prettier. Shade lowers the temperature of the pavement, and cooler pavement means the air above it stays cooler too. Residents then run their air conditioners less, which in turn reduces the heat those machines dump back outdoors. The effect fades: each degree saved makes the next degree easier to save.",
+      "markers": [
+        {
+          "id": "mk_blank",
+          "label": "The effect fades",
+          "kind": "blank",
+          "offset": {
+            "start": 300,
+            "end": 316,
+            "unit": "unicode_code_point"
+          },
+          "owner_item": "itm_002"
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "src_problem",
+          "page": 1
+        }
+      ],
+      "integrity": {
+        "is_original": false,
+        "restoration_kind": "vocabulary_correction",
+        "restored_ref": "SRC_EXAMPLE_TREES_01"
+      }
+    }
+  ],
+  "items": [
+    {
+      "id": "itm_001",
+      "number": "01",
+      "prompt": "다음 글의 요지로 가장 적절한 것은?",
+      "passage_ids": [
+        "psg_trees"
+      ],
+      "choices": [
+        {
+          "label": "①",
+          "text": "가로수는 도시의 미관을 위한 것이다."
+        },
+        {
+          "label": "②",
+          "text": "냉방 사용은 기온과 무관하다."
+        },
+        {
+          "label": "③",
+          "text": "그늘이 만든 냉각 효과는 스스로를 강화한다."
+        },
+        {
+          "label": "④",
+          "text": "포장도로는 기온을 낮춘다."
+        },
+        {
+          "label": "⑤",
+          "text": "도시 계획은 주민 참여로 결정된다."
+        }
+      ],
+      "answer": {
+        "form": "single",
+        "value": "③"
+      },
+      "problem_type": "MNI_GST",
+      "type_status": "registered",
+      "provenance": [
+        {
+          "source_id": "src_problem",
+          "page": 1
+        }
+      ],
+      "answer_provenance": [
+        {
+          "source_id": "src_answer",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "id": "itm_002",
+      "number": "02",
+      "prompt": "다음 빈칸에 들어갈 말로 가장 적절한 것은?",
+      "passage_ids": [
+        "psg_trees"
+      ],
+      "choices": [
+        {
+          "label": "①",
+          "text": "The effect fades"
+        },
+        {
+          "label": "②",
+          "text": "The effect compounds"
+        },
+        {
+          "label": "③",
+          "text": "The cost rises"
+        },
+        {
+          "label": "④",
+          "text": "The debate continues"
+        },
+        {
+          "label": "⑤",
+          "text": "The season changes"
+        }
+      ],
+      "answer": {
+        "form": "single",
+        "value": "②"
+      },
+      "problem_type": "VOC",
+      "type_status": "registered",
+      "provenance": [
+        {
+          "source_id": "src_problem",
+          "page": 1
+        }
+      ],
+      "answer_provenance": [
+        {
+          "source_id": "src_answer",
+          "page": 1
+        }
+      ],
+      "extensions": {
+        "haeminway.diagnosis": {
+          "concept_weights": {
+            "vocabulary": 0.2,
+            "syntax": 0.2,
+            "inference": 0.6
+          }
+        }
+      }
+    }
+  ]
+}

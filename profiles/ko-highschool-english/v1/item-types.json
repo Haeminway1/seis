@@ -1,0 +1,416 @@
+{
+  "schema_id": "item-generation-guide/v1",
+  "guide_id": "gpa-english-item-types-v1",
+  "status": "active",
+  "scope": {
+    "domain": "GPA",
+    "subject": "English"
+  },
+  "authority": {},
+  "global_contract": {
+    "source_layers": {
+      "original_passage": "승인된 원문을 그대로 보존한다. 생성 과정에서 수정하거나 덮어쓰지 않는다.",
+      "rendered_passage": "문항 유형 구현에 필요한 빈칸, 분할, 삽입 위치, 밑줄, 번호 및 의도적 어법 오류만 적용한 파생 지문이다.",
+      "prohibition": "난이도 조정을 이유로 original_passage 또는 rendered_passage의 비평가 대상 본문 어휘를 임의로 고쳐 쓰지 않는다. 난이도 조정은 원칙적으로 발문과 선지에서 수행한다."
+    },
+    "source_scope": {
+      "default": "full_passage",
+      "rule": "문항은 승인된 원문 지문 전체를 기본 단위로 사용한다. 유형 계약이 문장·단어 단독형을 명시한 경우에만 부분 차출할 수 있다.",
+      "forbidden": [
+        "원문 대신 생성 요약문이나 주제문만 본문으로 사용",
+        "문장 중간에서 잘린 원문 조각 사용",
+        "서로 다른 원문 지문의 문장이나 요약을 하나의 본문으로 결합",
+        "유형 구현과 무관한 범용 템플릿 문장으로 원문 대체"
+      ],
+      "audit": [
+        "각 생성 문항은 원문 passage id와 원문 SHA-256을 기록한다.",
+        "삭제·치환·추가 문자열을 기계 판독 가능한 목록으로 기록한다.",
+        "고정 단어 수 하한보다 원문 보존 여부와 문장 경계의 완전성을 우선 검사한다.",
+        "원문 전체를 쓰지 않는 유형은 해당 유형 계약의 명시적 허용 근거를 기록한다."
+      ]
+    },
+    "auxiliary_passages": {
+      "rule": "원문의 어휘·어구 주석은 별도 auxiliary passage로 보존하고 본문 prose와 구조적으로 분리한다.",
+      "forbidden": [
+        "어휘 주석을 순서 배열의 (A), (B), (C) 블록에 포함",
+        "어휘 주석을 문장 삽입 위치 또는 무관문장 번호 후보로 사용",
+        "어휘 주석을 본문 문단 분할·재배열 대상에 포함",
+        "어휘 주석을 빈칸 대상이나 빈칸 주변 문맥으로 사용"
+      ],
+      "audit": "구조형 문항의 분할·순서·삽입 연산 입력에는 main passage만 포함하고 auxiliary passage id는 별도 목록으로 기록한다."
+    },
+    "choice_language": "독해 객관식 선지는 위치·순서·보기 조합 기호를 제외하고 기본적으로 자연스러운 영어로 작성한다.",
+    "choice_quality": [
+      "다섯 선지는 서로 독립적인 의미와 오답 논리를 가져야 한다.",
+      "정답 문장을 복제한 뒤 부정어·조건어·상투어만 덧붙이는 템플릿 선지를 금지한다.",
+      "정답만 현저히 길거나 구체적이어서 길이 단서가 생기지 않도록 한다.",
+      "오답은 본문 근거로 명확히 배제되면서도 상위권 학생이 검토할 만한 매력도를 가져야 한다."
+    ],
+    "answer_and_explanation": [
+      "answer의 value 또는 values는 실제 정답 choice label과 정확히 일치해야 한다. SEIS v1 choice에는 is_correct 필드를 추가하지 않는다.",
+      "해설은 지문 전체 해석, 정답 근거, 각 선지별 정오 근거를 포함한다.",
+      "오답 해설은 일반적인 오류 범주가 아니라 해당 선지의 실제 표현과 본문 근거를 직접 대조한다.",
+      "생성 후 독립 모델이 문항을 다시 풀어 정답과 모든 오답을 검증한다."
+    ],
+    "rendering": {
+      "inline_choice_labels": "본문 안의 평가 대상에는 ①~⑤ 원번호를 붙인다.",
+      "grammar_targets": "어법 평가 대상은 원번호와 대상 구 전체를 굵게 표시하고 밑줄을 긋는다.",
+      "exact_text_parity": "본문에 표시된 대상 문자열과 선택지에 기록된 대상 문자열은 정확히 일치해야 한다."
+    }
+  },
+  "type_contracts": {
+    "GRM": {
+      "intent": "다섯 개의 짧은 어법 대상 중 어법상 틀린 하나를 판별한다.",
+      "target_count": 5,
+      "answer_count": 1,
+      "default_target_unit": "short_phrase",
+      "target_token_count": {
+        "min": 2,
+        "max": 5
+      },
+      "target_selection_rules": [
+        "기본 평가 단위는 절이나 문장 전체가 아니라 문법 관계가 드러나는 매우 짧은 구이다.",
+        "to처럼 기능어 한 단어만 단독으로 선택하지 않는다.",
+        "to search처럼 to부정사 전체, of which처럼 전치사+관계대명사, searching for처럼 분사+보어를 함께 선택한다.",
+        "수일치는 주어와 동사의 관계를 판단할 수 있도록 동사구 또는 최소한 의미 있는 결합 단위를 선택한다.",
+        "긴 절·문장 단위 표적은 실제 reference item이 요구하는 명시적 profile에서만 예외적으로 허용한다."
+      ],
+      "recommended_patterns": [
+        "to + verb",
+        "preposition + relative pronoun",
+        "participle + complement",
+        "auxiliary + participle",
+        "comparative phrase",
+        "verb + required complement"
+      ],
+      "forbidden_targets": [
+        "to",
+        "of",
+        "which",
+        "that",
+        "is처럼 관계를 보여 주지 못하는 고립 기능어"
+      ],
+      "display_contract": "본문의 ①~⑤ 원번호와 대상 구 전체를 bold+underline으로 렌더링하고, 선지는 같은 문자열을 그대로 재현한다."
+    },
+    "GRM_MULTI": {
+      "parent": "GRM",
+      "intent": "다섯 개의 짧은 어법 대상 중 둘 이상의 오류를 모두 선택한다.",
+      "target_count": 5,
+      "answer_count": {
+        "min": 2,
+        "max": 3
+      },
+      "default_target_unit": "short_phrase",
+      "target_token_count": {
+        "min": 2,
+        "max": 5
+      },
+      "inherits": [
+        "GRM.target_selection_rules",
+        "GRM.recommended_patterns",
+        "GRM.forbidden_targets",
+        "GRM.display_contract"
+      ],
+      "selection_instruction": "틀린 것을 모두 고르시오 또는 틀린 것의 정확한 개수를 명시한다."
+    },
+    "BLK": {
+      "intent": "하나의 빈칸을 문맥상 완성한다.",
+      "blank_count": 1,
+      "choice_count": 5,
+      "answer_count": 1,
+      "paraphrase_contract": [
+        "정답 선지에 원문의 누락 표현을 그대로 복사하지 않는다.",
+        "정답은 원문의 핵심 의미를 보존한 영어 패러프레이즈여야 한다.",
+        "빈칸 주변 문장은 패러프레이즈 정답이 문법적으로 들어가도록 최소한으로만 조정한다.",
+        "다섯 선지는 문법적 형태와 길이를 유사하게 맞춘다."
+      ],
+      "difficulty_contract": [
+        "기본 BLK는 단일 단어나 바로 이웃한 두 단어가 아니라 문맥 추론이 필요한 다단어 구 또는 절을 비운다.",
+        "정답은 빈칸 직전·직후 한 문장만으로 복원되지 않고 지문 전반의 논리 관계를 종합해야 한다.",
+        "빈칸이 둘인 경우 서로 충분히 떨어진 위치에 두고 두 값의 결합을 검토해야 정답이 결정되게 한다.",
+        "원문 어휘 주석과 동일하거나 주석만으로 유추되는 표현을 빈칸 정답 단서로 사용하지 않는다."
+      ]
+    },
+    "BLK_WRD": {
+      "parent": "BLK",
+      "intent": "단어 또는 매우 짧은 구 빈칸을 문맥상 완성한다.",
+      "blank_unit": "word_or_short_phrase",
+      "paraphrase_contract": "가능하면 원문 단어의 문맥상 동의어·상위어·개념적 등가어를 사용하고 직접 복사를 피한다."
+    },
+    "BLK_MULTI": {
+      "parent": "BLK",
+      "intent": "두 개의 단어 빈칸 (A), (B)를 동시에 완성한다.",
+      "blank_count": 2,
+      "blank_unit": "single_word",
+      "choice_structure": "각 선지는 `(A) word — (B) word` 형식의 짧은 단어 조합이다.",
+      "distribution": "정답 조합은 하나뿐이며 각 오답은 최소 한 빈칸에서 문맥상 배제된다.",
+      "prohibitions": [
+        "절 또는 문장 단위 빈칸",
+        "긴 구 조합",
+        "원문 표현의 기계적 복사"
+      ]
+    },
+    "SUM": {
+      "intent": "원문을 압축한 요약문의 (A), (B)를 완성한다.",
+      "summary_structure": "원문과 별도의 [Summary] 또는 box에 두 개의 짧은 빈칸 (A), (B)를 둔다.",
+      "choice_structure": "다섯 개의 (A)-(B) 조합 선지를 사용한다.",
+      "a_value_distribution": [
+        "a",
+        "a",
+        "b",
+        "c",
+        "c"
+      ],
+      "a_value_rule": "(A) 후보는 선지 순서상 첫 후보 2회, 둘째 후보 1회, 셋째 후보 2회로 배치한다. 기본 패턴은 a, a, b, c, c이다.",
+      "pair_design": [
+        "같은 (A) 후보를 가진 두 선지는 서로 다른 (B) 후보와 결합한다.",
+        "같은 (A) 값이 연속되는 선지는 (B)에서 명확한 의미 대비를 만든다.",
+        "정답은 (A)와 (B)를 각각 독립적으로 검토해야만 선택할 수 있게 한다.",
+        "한쪽 빈칸만 보고 정답이 노출되지 않도록 조합을 설계한다."
+      ],
+      "example_layout": [
+        "① (A) a — (B) x",
+        "② (A) a — (B) y",
+        "③ (A) b — (B) z",
+        "④ (A) c — (B) x",
+        "⑤ (A) c — (B) y"
+      ]
+    },
+    "INS": {
+      "intent": "주어진 문장이 들어갈 적절한 문장 사이 위치를 고른다.",
+      "source_structure": "[Given sentence]를 본문과 분리하고 본문 문장 사이에 ①~⑤ 삽입 위치를 둔다.",
+      "position_rule": "본문 마지막 뒤의 퇴화된 위치나 첫 주제문 앞의 명백한 죽은 선지를 피한다."
+    },
+    "SEQ": {
+      "intent": "주어진 첫 단락 뒤의 (A), (B), (C) 순서를 고른다.",
+      "fixed_choices": [
+        "① (A)-(C)-(B)",
+        "② (B)-(A)-(C)",
+        "③ (B)-(C)-(A)",
+        "④ (C)-(A)-(B)",
+        "⑤ (C)-(B)-(A)"
+      ]
+    },
+    "VOC": {
+      "intent": "본문 안의 다섯 밑줄 어휘 중 문맥상 부적절한 하나를 판별한다.",
+      "classification_contract": {
+        "passage_required": true,
+        "target_count": {
+          "exact": 5
+        },
+        "target_unit": "single_word",
+        "target_token_count": {
+          "exact": 1
+        },
+        "marker_kind": "underline",
+        "one_target_per_sentence": true,
+        "target_order": "passage_reading_order",
+        "choice_to_target_mapping": "one_to_one_in_order",
+        "selection_polarity": "contextually_inappropriate",
+        "answer_count": {
+          "exact": 1
+        }
+      },
+      "source_contract": [
+        "본문은 최소 다섯 문장을 포함한다.",
+        "각 평가 대상은 서로 다른 문장에 하나씩만 둔다.",
+        "한 문장 안에 평가 대상 어휘를 둘 이상 두지 않는다.",
+        "평가 대상은 한 단어인 내용어이며 구·절·숙어 전체에 밑줄을 긋지 않는다.",
+        "평가 대상은 본문을 위에서 아래로 읽는 순서대로 ①, ②, ③, ④, ⑤에 대응한다."
+      ],
+      "choice_contract": [
+        "선지 ①~⑤는 본문 속 다섯 밑줄 단어를 읽기 순서대로 정확히 재현한다.",
+        "선지 텍스트와 본문 marker label은 철자·대소문자까지 일치해야 한다.",
+        "정확히 한 단어만 해당 문맥에서 부적절하고 나머지 네 단어는 문법과 의미가 모두 자연스러워야 한다."
+      ],
+      "display_contract": "본문의 각 대상 단어 하나에 ①~⑤ 원번호를 붙이고 단어만 bold+underline으로 렌더링한다.",
+      "exclusion_contract": {
+        "VOC_PSG_SYN": "밑줄 표적이 한 개이고 그 동의어를 고르면 VOC_PSG_SYN이다.",
+        "VOC_SNT": "본문이 한 문장이고 한 표적의 동의어를 고르면 VOC_SNT이다.",
+        "VOC_CTX": "(A)(B)(C) 후보 조합을 고르면 VOC_CTX이다.",
+        "IMP": "한 표현의 함축적 의미를 문장·구 패러프레이즈로 고르면 IMP이다."
+      }
+    },
+    "VOC_REPL": {
+      "intent": "본문의 밑줄 친 표현 다섯 개와 제안된 대체 표현의 짝 중 문맥상 적절하지 않은 하나를 판별한다.",
+      "source_contract": {
+        "passage_required": true,
+        "target_count": {
+          "exact": 5
+        },
+        "target_unit": "underlined_expression",
+        "marker_kind": "underline",
+        "target_order": "passage_reading_order",
+        "exact_source_marker_linkage_required": true
+      },
+      "choice_contract": {
+        "choice_count": 5,
+        "value_kind": "source_to_replacement_pair",
+        "maps_one_to_one_to_source_markers": true,
+        "pair_order": "passage_reading_order",
+        "reproduce_source_expression_exactly": true,
+        "selection_polarity": "contextually_invalid_replacement",
+        "invalid_pair_count": 1
+      },
+      "answer_contract": {
+        "form": "single",
+        "answer_count": 1
+      },
+      "rendering_contract": [
+        "본문의 다섯 원문 표현에 ①~⑤ 원번호를 붙이고 각 표현 전체를 bold+underline으로 렌더링한다.",
+        "선지 ①~⑤는 원문 표현과 제안 대체 표현을 명시적으로 한 쌍으로 표시하며, 원문 표현은 본문 marker와 철자·대소문자까지 정확히 일치시킨다.",
+        "원문 표현-대체 표현의 두 열 또는 동등한 짝 레이아웃을 보존하여 어느 대체 표현이 어느 원문 표현에 대응하는지 모호하게 만들지 않는다."
+      ],
+      "exclusion_contract": {
+        "VOC": "VOC는 밑줄 친 원문 단어 다섯 개 중 부적절한 원문 단어를 고르며 대체 표현 짝이 없다.",
+        "VOC_PSG_SYN": "VOC_PSG_SYN은 문단 속 표적 하나의 동의어를 다섯 선지에서 고른다.",
+        "VOC_CTX": "VOC_CTX는 (A)(B)(C) 대안 어휘 조합을 고르며 다섯 개의 원문 표현-대체 표현 짝을 사용하지 않는다."
+      }
+    },
+    "VOC_PSG_SYN": {
+      "intent": "여러 문장으로 된 문단 속 한 단어의 문맥상 동의어를 고른다.",
+      "passage_contract": {
+        "sentence_count": {
+          "min": 2
+        },
+        "discourse_unit": "paragraph",
+        "target_count": 1,
+        "target_unit": "single_word",
+        "target_token_count": 1
+      },
+      "target_selection_rules": [
+        "표적은 문단 안에 실제로 존재하는 내용어 한 단어여야 한다.",
+        "구·절·숙어처럼 둘 이상의 단어를 하나의 표적으로 묶지 않는다.",
+        "주변 문장들이 표적 단어의 의미를 추론할 충분한 문맥을 제공해야 한다.",
+        "표적 단어 하나만 굵게 밑줄로 표시하고 VOC의 ①~⑤ 다중 표적 번호는 붙이지 않는다."
+      ],
+      "choice_contract": [
+        "다섯 선지는 모두 한 단어로 작성한다.",
+        "정답은 표적 단어의 해당 문맥에서의 동의어여야 한다.",
+        "오답은 품사와 난이도를 맞추되 해당 문맥에서 동의어가 아니어야 한다.",
+        "함축적 문장 의미나 표현 전체의 패러프레이즈를 묻지 않는다."
+      ],
+      "distinction": "VOC는 밑줄 5개 중 부적절한 어휘를 찾고, VOC_SNT는 한 문장만 사용하며, VOC_WRD는 문단 없이 단독 단어를 제시하고, IMP는 표현의 함축 의미를 묻는다."
+    },
+    "VOC_XWD": {
+      "intent": "가로·세로 단서와 교차 글자 제약을 함께 풀어 크로스워드에 들어갈 수 없는 단어를 고른다.",
+      "grid_contract": {
+        "clue_count": 5,
+        "directions": [
+          "across",
+          "down"
+        ],
+        "numbered_start_cells_required": true,
+        "grid_and_clue_number_mapping_required": true,
+        "intersection_consistency_required": true,
+        "cell_count_matches_answer_length": true
+      },
+      "clue_contract": [
+        "각 단서는 빈칸 하나를 가진 자연스러운 영어 문장이다.",
+        "각 정답 후보는 한 단어이며 정확히 하나의 단서에 대응한다.",
+        "정답을 제외한 네 단어는 각자의 단서 의미와 글자 수, 모든 교차 글자를 동시에 만족해야 한다.",
+        "정답 단어는 의미·글자 수·교차 글자 중 하나 이상의 명시적 이유로 들어갈 수 없어야 한다."
+      ],
+      "choice_contract": {
+        "count": 5,
+        "value_kind": "single_word",
+        "selection_polarity": "does_not_fit",
+        "fit_count": 4,
+        "answer_count": 1
+      },
+      "rendering_contract": "격자 모양, 칸 수, 시작 번호, 교차 위치와 ACROSS/DOWN 단서를 함께 렌더링한다. 단서 텍스트만 보존한 평문은 완전한 문항으로 간주하지 않는다.",
+      "distinction": "VOC_DEF는 정의-단어 대응만 검사하지만 VOC_XWD는 단서 의미와 퍼즐 격자의 교차 제약을 동시에 검사한다."
+    },
+    "IMP": {
+      "intent": "본문의 한 밑줄 표현이 문맥에서 의미하는 바를 고른다.",
+      "choice_contract": "다섯 선지는 자연스러운 영어 의미 패러프레이즈로 작성한다."
+    },
+    "MNI_GST": {
+      "intent": "글 전체의 요지를 고른다.",
+      "choice_contract": "다섯 개의 간결하고 독립적인 영어 요지 문장을 사용한다."
+    },
+    "MNI_TIT": {
+      "intent": "글 전체를 대표하는 제목을 고른다.",
+      "choice_contract": "다섯 개의 간결한 영어 제목을 사용하며 설명문 전체를 제목으로 사용하지 않는다."
+    },
+    "QA": {
+      "intent": "본문을 근거로 답할 수 있거나 답할 수 없는 질문을 선택한다.",
+      "prompt_contract": "발문은 짧고 polarity를 명시한다.",
+      "choice_contract": "다섯 선지는 간결한 영어 의문문이다."
+    },
+    "APL_CPT": {
+      "intent": "본문의 핵심 개념을 서로 독립된 외부 사례에 적용한다.",
+      "prompt_contract": "한국어 한 문장으로 짧게 작성하며 사례 본문을 발문에 넣지 않는다.",
+      "prompt_max_characters": 55,
+      "choice_contract": "다섯 선지는 서로 독립된 영어 사례이며 정확히 하나만 polarity를 만족한다."
+    },
+    "APL_CMB": {
+      "intent": "본문 개념을 복수 진술에 적용하고 해당 진술 조합을 고른다.",
+      "statement_labels": [
+        "ㄱ",
+        "ㄴ",
+        "ㄷ",
+        "ㄹ",
+        "ㅁ"
+      ],
+      "statement_count": 5,
+      "choice_count": 5,
+      "choice_contract": "각 선지는 보기 라벨 2~4개의 서로 다른 조합이며, 정답은 해당하는 모든 보기만 포함한다."
+    },
+    "CON_CNT": {
+      "intent": "다섯 개 이상의 진술을 판정한 뒤 옳은 진술 개수를 고른다.",
+      "statement_count": {
+        "min": 5
+      },
+      "choice_contract": "가능한 개수 값 5개를 선지로 사용한다."
+    },
+    "NOT_MULTI": {
+      "intent": "서로 독립된 형식의 실용문 (A), (B)를 읽고 두 자료의 내용을 비교한 진술 하나를 판별한다.",
+      "source_contract": {
+        "stimulus_count": {
+          "exact": 2
+        },
+        "stimulus_labels": [
+          "(A)",
+          "(B)"
+        ],
+        "stimulus_kind": "independently_formatted_notice_or_practical_text",
+        "preserve_each_stimulus_layout": true,
+        "required_layout_features": [
+          "notice_or_event_information",
+          "list_or_dialogue"
+        ]
+      },
+      "choice_contract": {
+        "choice_count": 5,
+        "value_kind": "content_comparison_statement",
+        "compares_two_labeled_stimuli": true,
+        "selection_polarity": "contextually_incorrect",
+        "answer_count": 1
+      },
+      "answer_contract": {
+        "form": "single",
+        "answer_count": 1
+      },
+      "rendering_contract": [
+        "(A), (B)를 별도의 라벨 블록으로 렌더링하고 각 실용문의 제목·시간/장소·목록·질문/답변·화자 표시 등 자체 레이아웃을 보존한다.",
+        "두 실용문을 모두 제시한 뒤에만 비교 발문과 선지를 렌더링한다."
+      ],
+      "exclusion_contract": {
+        "NOT": "NOT는 하나의 안내문 또는 실용문만 읽어 내용 일치·불일치를 판별한다.",
+        "CON": "CON은 두 개의 독립적으로 형식화된 실용문 (A), (B)의 비교를 요구하지 않는 일반 내용 일치·불일치 유형이다."
+      }
+    }
+  },
+  "release_gates": [
+    "JSON Schema 검증",
+    "SEIS 의미 검증",
+    "유형별 구조 불변조건 검증",
+    "원문 passage id·SHA-256 및 변형 내역 검증",
+    "원문 전체 보존 또는 유형별 명시적 부분 차출 예외 검증",
+    "문장 중간 절단·서로 다른 원문 결합·중복 본문 검출",
+    "answer label과 실제 정답 선지 동기화 검증",
+    "독립 재풀이를 통한 정답·오답·해설 검증",
+    "HTML에서 marker와 강조 표시 시각 검증"
+  ]
+}

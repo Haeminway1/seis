@@ -1,0 +1,1154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://munjaedang.local/seis/v1/schema.json",
+  "title": "SEIS v1 — Standard English Item Schema",
+  "description": "Authoritative schema for one English assessment document. Source text is preserved verbatim; markers identify spans by Unicode code-point offsets.",
+  "x-seis-invariants": [
+    "SEIS-INV-001: Source, passage, item, marker, and per-item choice-label identifiers are unique in their scopes.",
+    "SEIS-INV-002: Every provenance.source_id resolves to sources[].id; answer_provenance resolves only to a source with role answer.",
+    "SEIS-INV-003: Every items[].passage_ids entry resolves to passages[].id.",
+    "SEIS-INV-004: Every marker.owner_item resolves to an item that references the containing passage.",
+    "SEIS-INV-005: A unicode_code_point span satisfies 0 <= start < end <= len(text) and text[start:end] equals label exactly.",
+    "SEIS-INV-006: A unicode_code_point_anchor satisfies 0 <= position <= len(text) and is used when no source glyph occupies a span.",
+    "SEIS-INV-007: A source_region references the same source_id and page as containing-passage provenance; normalized top-left coordinates stay inside [0,1].",
+    "SEIS-INV-008: Single and multiple answers resolve to existing unique choice labels; free_text answers require zero choices.",
+    "SEIS-INV-009: Passage text exists only in passages[] and is referenced from items by passage_ids.",
+    "SEIS-INV-010: A source without origin is extracted; generated sources declare a machine-readable locator.",
+    "SEIS-INV-011: A physical source may declare its locator root explicitly as academy_data, repository, or csat_sources; omitted roots retain the academy_data default.",
+    "SEIS-INV-012: When passage.integrity is present and is_original is false, restoration_kind must be present and must not be 'none'."
+  ],
+  "x-seis-type-system": {
+    "rule": "problem_type is valid only when the item satisfies the matching versioned classification, source, choice, answer, rendering, and exclusion contracts; a code-name match alone is insufficient.",
+    "registered_registry": "../../catalog/item-types/v1/registered-v3-snapshot.json",
+    "candidate_registry": "../../catalog/item-types/v1/candidate-overlay.json",
+    "type_contracts": "../../catalog/generation-guides/v1/gpa-english-item-types.json"
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_id",
+    "exam",
+    "sources",
+    "passages",
+    "items"
+  ],
+  "properties": {
+    "schema_id": {
+      "const": "seis/v1"
+    },
+    "exam": {
+      "$ref": "#/$defs/exam"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/source"
+      },
+      "minItems": 1
+    },
+    "passages": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/passage"
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/item"
+      },
+      "minItems": 1
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+    },
+    "exam": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "domain",
+        "title"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "domain": {
+          "enum": [
+            "CSAT",
+            "MS",
+            "UTE",
+            "GPA"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "year": {
+          "type": "integer",
+          "minimum": 1900
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "string",
+              "number",
+              "integer",
+              "boolean",
+              "null"
+            ]
+          }
+        },
+        "batch": {
+          "$ref": "#/$defs/batch"
+        }
+      }
+    },
+    "batch": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "batch_id",
+        "blueprint_id"
+      ],
+      "properties": {
+        "batch_id": {
+          "type": "string",
+          "pattern": "^GEN_(CSAT|MS|UTE|GPA)_[A-Z0-9_]+_[0-9A-HJKMNP-TV-Z]{26}$"
+        },
+        "blueprint_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Z0-9_]+$"
+        },
+        "generated_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "role",
+        "sha256"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "role": {
+          "enum": [
+            "problem",
+            "answer",
+            "script",
+            "audio"
+          ]
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "locator_root": {
+          "enum": [
+            "academy_data",
+            "repository",
+            "csat_sources"
+          ]
+        },
+        "origin": {
+          "enum": [
+            "extracted",
+            "generated"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": [
+              "origin"
+            ],
+            "properties": {
+              "origin": {
+                "const": "generated"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "locator"
+            ],
+            "properties": {
+              "locator": {
+                "pattern": "^(?:[A-Za-z0-9][A-Za-z0-9._-]*/)*[A-Za-z0-9][A-Za-z0-9._-]*(?:#[A-Za-z0-9][A-Za-z0-9._:-]*)?$"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_id"
+      ],
+      "properties": {
+        "source_id": {
+          "$ref": "#/$defs/id"
+        },
+        "page": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "region": {
+          "$ref": "#/$defs/region"
+        }
+      }
+    },
+    "offset": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "start",
+            "end",
+            "unit"
+          ],
+          "properties": {
+            "start": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "end": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "unit": {
+              "const": "unicode_code_point"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "position",
+            "unit"
+          ],
+          "properties": {
+            "position": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "unit": {
+              "const": "unicode_code_point_anchor"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source_id",
+            "page",
+            "region",
+            "coordinate_space",
+            "origin",
+            "unit"
+          ],
+          "properties": {
+            "source_id": {
+              "$ref": "#/$defs/id"
+            },
+            "page": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "region": {
+              "$ref": "#/$defs/region"
+            },
+            "coordinate_space": {
+              "const": "normalized_page"
+            },
+            "origin": {
+              "const": "top_left"
+            },
+            "unit": {
+              "const": "source_region"
+            }
+          }
+        }
+      ]
+    },
+    "region": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "x",
+        "y",
+        "width",
+        "height"
+      ],
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "y": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "width": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "height": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "marker": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "label",
+        "kind",
+        "owner_item",
+        "offset"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "label": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "blank",
+            "underline",
+            "paragraph",
+            "reference",
+            "ordering_slot",
+            "insert_slot",
+            "custom"
+          ]
+        },
+        "owner_item": {
+          "$ref": "#/$defs/id"
+        },
+        "offset": {
+          "$ref": "#/$defs/offset"
+        }
+      }
+    },
+    "passage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "text",
+        "markers",
+        "provenance"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "x-seis-grade": "critical"
+        },
+        "markers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/marker"
+          }
+        },
+        "provenance": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/provenance"
+          },
+          "minItems": 1
+        },
+        "integrity": {
+          "type": "object",
+          "description": "Whether this passage is the source original or an assessment-modified version. Exam papers routinely alter the source on purpose - a word is swapped for a vocabulary item, paragraphs are shuffled for an ordering item. Without this field a reader cannot tell, and reusing the passage silently propagates the deliberate error. Optional: absence means unknown.",
+          "additionalProperties": false,
+          "required": [
+            "is_original"
+          ],
+          "properties": {
+            "is_original": {
+              "type": "boolean",
+              "description": "True when the text equals the source as published."
+            },
+            "restoration_kind": {
+              "description": "How the exam version differs from the source.",
+              "enum": [
+                "none",
+                "grammar_correction",
+                "vocabulary_correction",
+                "blank_answer_insertion",
+                "irrelevant_sentence_removal",
+                "paragraph_reordering",
+                "sentence_insertion",
+                "summary_source_only",
+                "combined"
+              ]
+            },
+            "restored_ref": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Identifier of the restored original in an external corpus. A reference only - the standard never carries the restored text, so publishing a SEIS document does not publish the source passage."
+            }
+          }
+        }
+      }
+    },
+    "choice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label",
+        "text"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "text": {
+          "type": "string",
+          "x-seis-grade": "critical"
+        },
+        "diagnosis": {
+          "$ref": "#/$defs/diagnosis"
+        }
+      }
+    },
+    "concept_weight": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "concept_id",
+        "weight"
+      ],
+      "properties": {
+        "concept_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "weight": {
+          "type": "number"
+        }
+      }
+    },
+    "tags": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "concept_weights"
+      ],
+      "properties": {
+        "concept_weights": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/concept_weight"
+          }
+        },
+        "tag_status": {
+          "enum": [
+            "draft",
+            "approved"
+          ]
+        },
+        "tagged_by": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tagged_at": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "diagnosis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mechanisms",
+        "if_chosen"
+      ],
+      "properties": {
+        "mechanisms": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "near_correct": {
+          "type": "boolean"
+        },
+        "if_chosen": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "answer": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "form",
+            "value"
+          ],
+          "properties": {
+            "form": {
+              "const": "single"
+            },
+            "value": {
+              "type": "string",
+              "minLength": 1,
+              "x-seis-grade": "critical"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "form",
+            "values"
+          ],
+          "properties": {
+            "form": {
+              "const": "multiple"
+            },
+            "values": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1,
+              "uniqueItems": true,
+              "x-seis-grade": "critical"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "form",
+            "text"
+          ],
+          "properties": {
+            "form": {
+              "const": "free_text"
+            },
+            "text": {
+              "type": "string",
+              "minLength": 1,
+              "x-seis-grade": "critical"
+            }
+          }
+        }
+      ]
+    },
+    "replacement_pair": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "replacement"
+      ],
+      "properties": {
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "replacement": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "replacement_pairs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/replacement_pair"
+      },
+      "uniqueItems": true
+    },
+    "choice_structure_choice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label",
+        "concept",
+        "expressions"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "concept": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expressions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "choice_structure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "choices"
+      ],
+      "properties": {
+        "kind": {
+          "const": "concept_expression_pairs"
+        },
+        "choices": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/choice_structure_choice"
+          }
+        }
+      }
+    },
+    "alternative_block": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label",
+        "alternatives"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "pattern": "^\\([A-Z]\\)$"
+        },
+        "alternatives": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "alternative_blocks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/alternative_block"
+      },
+      "uniqueItems": true
+    },
+    "auxiliary": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "points": {
+          "type": "number",
+          "minimum": 0,
+          "x-seis-grade": "auxiliary"
+        },
+        "difficulty": {
+          "type": "string",
+          "minLength": 1,
+          "x-seis-grade": "auxiliary"
+        },
+        "translation": {
+          "type": "string",
+          "minLength": 1,
+          "x-seis-grade": "auxiliary"
+        },
+        "replacement_pairs": {
+          "$ref": "#/$defs/replacement_pairs"
+        },
+        "choice_structure": {
+          "$ref": "#/$defs/choice_structure"
+        },
+        "alternative_blocks": {
+          "$ref": "#/$defs/alternative_blocks"
+        }
+      }
+    },
+    "capture_provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "capture_segment",
+        "source_file_id",
+        "source_file_ref",
+        "legacy_item_id"
+      ],
+      "properties": {
+        "capture_segment": {
+          "type": "string",
+          "pattern": "^P[0-9]{2}$"
+        },
+        "source_file_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+        },
+        "source_file_ref": {
+          "type": "string",
+          "pattern": "^P[0-9]{2}/item_[1-9][0-9]*\\.json$"
+        },
+        "legacy_item_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+        }
+      }
+    },
+    "semantic_type_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "previous_problem_type",
+        "reviewed_problem_type",
+        "decision",
+        "decision_source",
+        "confidence",
+        "unresolved",
+        "answer_unresolved"
+      ],
+      "properties": {
+        "previous_problem_type": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Z][A-Z0-9_]*$"
+        },
+        "reviewed_problem_type": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Z][A-Z0-9_]*$"
+        },
+        "decision": {
+          "const": "preserved_registered_type"
+        },
+        "decision_source": {
+          "$ref": "#/$defs/semantic_type_review_source"
+        },
+        "confidence": {
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "unresolved": {
+          "type": "boolean"
+        },
+        "answer_unresolved": {
+          "type": "boolean"
+        }
+      }
+    },
+    "semantic_type_review_source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "catalog",
+        "evidence",
+        "source_event_type"
+      ],
+      "properties": {
+        "catalog": {
+          "type": "string",
+          "const": "catalog/item-types/v1/registered-v3-snapshot.json"
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "source_event_type": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Z][A-Z0-9_]*$"
+        }
+      }
+    },
+    "book_classification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "actual_code",
+        "exercise_role",
+        "subsection_role",
+        "semantic_type_review",
+        "role_evidence",
+        "source_category"
+      ],
+      "properties": {
+        "actual_code": {
+          "oneOf": [
+            {
+              "const": "INTRO"
+            },
+            {
+              "type": "string",
+              "pattern": "^CODE [0-9]+-[0-9]+$"
+            }
+          ]
+        },
+        "exercise_role": {
+          "enum": [
+            "concept_drill",
+            "example",
+            "hardcore",
+            "practice",
+            "representative_exam"
+          ]
+        },
+        "subsection_role": {
+          "enum": [
+            "concept_drill",
+            "example",
+            "hardcore",
+            "practice",
+            "representative_exam"
+          ]
+        },
+        "semantic_type_review": {
+          "$ref": "#/$defs/semantic_type_review"
+        },
+        "role_evidence": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_category": {
+          "enum": [
+            "book_authored_or_unspecified",
+            "official_exam_source"
+          ]
+        }
+      }
+    },
+    "item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "number",
+        "prompt",
+        "passage_ids",
+        "choices",
+        "answer",
+        "problem_type",
+        "type_status",
+        "provenance",
+        "answer_provenance"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "number": {
+          "type": "string",
+          "minLength": 1,
+          "x-seis-grade": "critical"
+        },
+        "prompt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "passage_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "uniqueItems": true
+        },
+        "tags": {
+          "$ref": "#/$defs/tags"
+        },
+        "choices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/choice"
+          }
+        },
+        "answer": {
+          "$ref": "#/$defs/answer"
+        },
+        "problem_type": {
+          "type": "string",
+          "minLength": 1,
+          "x-seis-grade": "classification"
+        },
+        "type_status": {
+          "enum": [
+            "registered",
+            "candidate"
+          ]
+        },
+        "provenance": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/provenance"
+          },
+          "minItems": 1
+        },
+        "answer_provenance": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/provenance"
+          },
+          "minItems": 1
+        },
+        "lineage": {
+          "$ref": "#/$defs/lineage"
+        },
+        "auxiliary": {
+          "$ref": "#/$defs/auxiliary"
+        },
+        "capture_provenance": {
+          "$ref": "#/$defs/capture_provenance"
+        },
+        "book_classification": {
+          "$ref": "#/$defs/book_classification"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": [
+              "problem_type"
+            ],
+            "properties": {
+              "problem_type": {
+                "const": "VOC_REPL"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "auxiliary": {
+                "properties": {
+                  "replacement_pairs": {
+                    "$ref": "#/$defs/replacement_pairs"
+                  }
+                }
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "auxiliary": {
+                "not": {
+                  "required": [
+                    "replacement_pairs"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "problem_type"
+            ],
+            "properties": {
+              "problem_type": {
+                "const": "PAIR_MATCH"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "auxiliary": {
+                "properties": {
+                  "choice_structure": {
+                    "$ref": "#/$defs/choice_structure"
+                  }
+                }
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "auxiliary": {
+                "not": {
+                  "required": [
+                    "choice_structure"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "problem_type"
+            ],
+            "properties": {
+              "problem_type": {
+                "const": "VOC_CTX"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "auxiliary": {
+                "properties": {
+                  "alternative_blocks": {
+                    "$ref": "#/$defs/alternative_blocks"
+                  }
+                }
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "auxiliary": {
+                "not": {
+                  "required": [
+                    "alternative_blocks"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "lineage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "origin"
+      ],
+      "properties": {
+        "origin": {
+          "enum": [
+            "extracted",
+            "generated"
+          ]
+        },
+        "generation_batch_id": {
+          "type": "string",
+          "pattern": "^GEN_(CSAT|MS|UTE|GPA)_[A-Z0-9_]+_[0-9A-HJKMNP-TV-Z]{26}$"
+        },
+        "blueprint_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Z0-9_]+$"
+        },
+        "source_exam_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Z0-9_]+$"
+        },
+        "source_passage_id": {
+          "type": "string",
+          "pattern": "^SRC_[A-Z0-9_]+_[0-9]{1,3}(?:-[0-9]{1,3})?$"
+        },
+        "parent_item_id": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[A-Z0-9_]+$"
+            }
+          ]
+        },
+        "requested_type": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Z][A-Z0-9_]*$"
+        },
+        "transform": {
+          "enum": [
+            "passage_reuse",
+            "type_swap",
+            "difficulty_shift",
+            "novel"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": [
+              "origin"
+            ],
+            "properties": {
+              "origin": {
+                "const": "generated"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "generation_batch_id",
+              "source_exam_id",
+              "source_passage_id",
+              "parent_item_id",
+              "requested_type",
+              "transform"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

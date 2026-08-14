@@ -1,0 +1,1484 @@
+{
+  "schema_id": "item-type-registry-snapshot/v1",
+  "migration_status": "augmented-normalization-v1",
+  "categories": [
+    {
+      "id": "MNI",
+      "full_name": "Main Idea",
+      "korean": "대의파악",
+      "aliases": [
+        "main_idea",
+        "mi",
+        "MI",
+        "대의파악",
+        "대의",
+        "주제계열"
+      ],
+      "description": "글의 주제/제목/요지/주장 등 대의 파악 유형"
+    },
+    {
+      "id": "LST",
+      "full_name": "Listening",
+      "korean": "듣기",
+      "aliases": [
+        "listening",
+        "L",
+        "듣기",
+        "청해"
+      ],
+      "description": "듣기 평가 (대본은 보조이며, 음성을 들어야 풀이 가능)"
+    },
+    {
+      "id": "LPS",
+      "full_name": "Long Passage Set",
+      "korean": "장문 세트",
+      "aliases": [
+        "long_passage",
+        "LP",
+        "장문",
+        "장문세트"
+      ],
+      "description": "공유 지문에 여러 문항이 결합된 장문 세트"
+    },
+    {
+      "id": "VOC",
+      "full_name": "Vocabulary",
+      "korean": "어휘",
+      "aliases": [
+        "vocabulary",
+        "vo",
+        "VO",
+        "어휘"
+      ],
+      "description": "어휘 평가 (밑줄, 동의어, 문맥, 정의 등)"
+    },
+    {
+      "id": "OEQ",
+      "full_name": "Open-Ended Question",
+      "korean": "서답형",
+      "aliases": [
+        "open_ended",
+        "oe",
+        "서답형",
+        "서답",
+        "단답형",
+        "서술형",
+        "작문"
+      ],
+      "description": "객관식이 아닌 모든 답안 형식 (단답/서술/작문 포함)"
+    }
+  ],
+  "answer_lengths": [
+    {
+      "id": "word",
+      "korean": "단답형 (단어)",
+      "description": "단어 1개 답변"
+    },
+    {
+      "id": "phrase",
+      "korean": "단답형 (구)",
+      "description": "구 (2-5단어) 답변"
+    },
+    {
+      "id": "sentence",
+      "korean": "서술형 (문장)",
+      "description": "한 문장 답변"
+    },
+    {
+      "id": "paragraph",
+      "korean": "서술형 (단락)",
+      "description": "여러 문장 답변"
+    },
+    {
+      "id": "essay",
+      "korean": "작문 (에세이)",
+      "description": "단락 이상의 글"
+    }
+  ],
+  "source_forms": [
+    {
+      "id": "PSG",
+      "korean": "지문/단락",
+      "description": "default — 표기 생략",
+      "is_default": true
+    },
+    {
+      "id": "DLG",
+      "korean": "대화문",
+      "description": "A:/B: 화자 구조"
+    },
+    {
+      "id": "SNT",
+      "korean": "단일 문장",
+      "description": "한 문장만"
+    },
+    {
+      "id": "WRD",
+      "korean": "단어/구",
+      "description": "단어 1개 또는 단어 쌍 (예: aaa:bbb)"
+    },
+    {
+      "id": "IMG",
+      "korean": "이미지/도표",
+      "description": "이미지나 도표 단독"
+    },
+    {
+      "id": "TBL",
+      "korean": "표",
+      "description": "표 형식"
+    },
+    {
+      "id": "MIX",
+      "korean": "혼합",
+      "description": "지문 + 이미지 등 혼합"
+    }
+  ],
+  "modifiers": [
+    {
+      "id": "DLG",
+      "korean": "대화문",
+      "description": "두 사람 이상의 대화 형식 (A:/B: 화자)",
+      "aliases": [
+        "DIALOGUE",
+        "dialogue"
+      ]
+    },
+    {
+      "id": "SNT",
+      "korean": "단일 문장",
+      "description": "단일 문장 단위 변형",
+      "aliases": [
+        "SENTENCE",
+        "sentence"
+      ]
+    },
+    {
+      "id": "WRD",
+      "korean": "단어",
+      "description": "단어/구 단위 변형",
+      "aliases": [
+        "WORD",
+        "word"
+      ]
+    },
+    {
+      "id": "MULTI",
+      "korean": "다중 빈칸",
+      "description": "한 문항 안에 둘 이상의 빈칸이 있고 조합 선지로 답하는 변형",
+      "aliases": [
+        "multiple_blanks",
+        "multi_blank"
+      ]
+    },
+    {
+      "id": "BOOK",
+      "korean": "교재형",
+      "description": "교재(수능특강 등) 강·섹션 구조 포함",
+      "aliases": [
+        "book"
+      ]
+    },
+    {
+      "id": "SCRIPT",
+      "korean": "듣기 스크립트",
+      "description": "듣기 대본 기반 변형",
+      "aliases": [
+        "script"
+      ]
+    },
+    {
+      "id": "INTERVIEW",
+      "korean": "인터뷰",
+      "description": "인터뷰/대담 형식",
+      "aliases": [
+        "interview"
+      ]
+    },
+    {
+      "id": "FORMAL",
+      "korean": "격식체",
+      "description": "격식 문체 변형 (편입 등)",
+      "aliases": [
+        "formal"
+      ]
+    }
+  ],
+  "types": [
+    {
+      "code": "BLK",
+      "full_name": "Blank Completion",
+      "korean": "빈칸 완성",
+      "description": "지문에 빈칸 1개, 들어갈 말 객관식",
+      "parent": null,
+      "category": null,
+      "aliases": [
+        "BC",
+        "blank_completion",
+        "빈칸",
+        "빈칸완성",
+        "빈칸 추론",
+        "BLANK",
+        "BLANK_COMPLETION",
+        "LP_BLK",
+        "RC_BC",
+        "RC_BLANK",
+        "blank",
+        "blank-completion",
+        "blank-inference",
+        "blank_inference",
+        "cloze_inference",
+        "빈칸 내용 추론",
+        "빈칸 내용 추론하기",
+        "빈칸 추론하기",
+        "빈칸에 적절한 표현을 추론한다",
+        "빈칸에 적절한 표현을 추론한다."
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "BLK_DLG",
+      "full_name": "Blank Completion - Dialogue",
+      "korean": "대화문 빈칸",
+      "description": "대화문 안의 빈칸",
+      "parent": "BLK",
+      "category": null,
+      "aliases": [
+        "BC_DIALOGUE",
+        "BC_DLG",
+        "blank_dialogue",
+        "대화문 빈칸"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "BLK_SNT",
+      "full_name": "Blank Completion - Sentence",
+      "korean": "단일 문장 빈칸",
+      "description": "한 문장 안의 빈칸",
+      "parent": "BLK",
+      "category": null,
+      "aliases": [
+        "blank_sentence",
+        "문장 빈칸"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "BLK_WRD",
+      "full_name": "Blank Completion - Word",
+      "korean": "단어 빈칸",
+      "description": "단어/구 단위 빈칸",
+      "parent": "BLK",
+      "category": null,
+      "aliases": [
+        "blank_word",
+        "단어 빈칸"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "BLK_MULTI",
+      "full_name": "Blank Completion - Multiple Blanks",
+      "korean": "다중 빈칸",
+      "description": "한 문항 안에 빈칸이 2개 이상 있고 조합 선지를 고르는 유형",
+      "parent": "BLK",
+      "category": null,
+      "aliases": [
+        "multi_blank",
+        "multiple_blanks",
+        "다중 빈칸",
+        "복수 빈칸"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "INS",
+      "full_name": "Sentence Insertion",
+      "korean": "문장 삽입",
+      "description": "주어진 문장이 들어가기에 적절한 곳",
+      "parent": null,
+      "category": null,
+      "aliases": [
+        "IS",
+        "sentence_insertion",
+        "문장 삽입",
+        "INSERTION",
+        "LP_INS",
+        "RC_INSERT",
+        "SENTENCE_INSERT",
+        "SENTENCE_INSERTION",
+        "SENT_POS",
+        "SI",
+        "insert_sentence",
+        "insertion",
+        "sentence-insertion",
+        "statement_insert",
+        "문장 삽입하기",
+        "문장의 위치 파악",
+        "문장의 위치 파악하기",
+        "주어진 문장 넣기",
+        "주어진 문장이 들어갈 위치를 파악한다"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "INS_DLG",
+      "full_name": "Sentence Insertion - Dialogue",
+      "korean": "대화문 문장 삽입",
+      "description": "대화문 안에 문장 삽입",
+      "parent": "INS",
+      "category": null,
+      "aliases": [
+        "IS_DIALOGUE",
+        "IS_DLG",
+        "dialogue_insertion",
+        "대화문 삽입"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "SEQ",
+      "full_name": "Sequence Ordering",
+      "korean": "순서 배열",
+      "description": "단락의 올바른 순서",
+      "parent": null,
+      "category": null,
+      "aliases": [
+        "SQ",
+        "sequence",
+        "순서",
+        "순서 배열",
+        "ORD",
+        "ORDER",
+        "ORDERING",
+        "RC_ORDER",
+        "ordering",
+        "paragraph_order",
+        "paragraph_ordering",
+        "passage_order",
+        "shared_ordering",
+        "글의 순서",
+        "글의 순서 배열",
+        "글의 순서 파악",
+        "글의 순서 파악하기",
+        "글의 순서를 파악한다"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "SEQ_DLG",
+      "full_name": "Sequence Ordering - Dialogue",
+      "korean": "대화 순서 배열",
+      "description": "대화의 올바른 순서",
+      "parent": "SEQ",
+      "category": null,
+      "aliases": [
+        "DO",
+        "dialogue_order",
+        "대화 순서"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "GRM",
+      "full_name": "Grammar",
+      "korean": "어법",
+      "description": "지문 내 5개 밑줄 중 어법상 틀린 것",
+      "parent": null,
+      "category": null,
+      "aliases": [
+        "GR",
+        "grammar",
+        "어법",
+        "GRAMMAR",
+        "GRAMMAR_UNDERLINE",
+        "LP_GRM",
+        "RC_GR",
+        "grammar-error",
+        "grammar-error-identification",
+        "grammar_error",
+        "grammar_error_underlined",
+        "grammar_incorrect",
+        "grammar_underlined",
+        "grammar_underlined_error",
+        "문법성 판단",
+        "어법 오류 파악",
+        "어법상 맞지 않는 표현을 찾는다.",
+        "어법상 틀린 것",
+        "어법상 틀린 곳 찾기",
+        "어법상 틀린 표현 고르기",
+        "어법상 틀린 표현을 찾는다",
+        "어법성 판단",
+        "어법성 판단하기"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "VOC",
+      "full_name": "Vocabulary - Underline",
+      "korean": "어휘 (밑줄 5개)",
+      "description": "지문 내 5개 밑줄 어휘 중 부적절한 것",
+      "parent": null,
+      "category": "VOC",
+      "aliases": [
+        "VO",
+        "vocabulary",
+        "어휘",
+        "RC_VO",
+        "RC_VOCAB",
+        "RC_VOCAB_USAGE",
+        "RP_VO",
+        "VOCAB_CONTEXT",
+        "context-vocabulary",
+        "context-word-choice",
+        "context-word-error",
+        "context-word-usage",
+        "contextual-vocabulary",
+        "contextual_vocabulary",
+        "contextual_vocabulary_error",
+        "contextual_word_error",
+        "inappropriate_word",
+        "incorrect-word",
+        "shared_contextual_vocabulary_error",
+        "vocab-context",
+        "vocabulary-context",
+        "vocabulary-in-context",
+        "vocabulary-in-context-error",
+        "vocabulary_context",
+        "vocabulary_context_error",
+        "vocabulary_in_context",
+        "vocabulary_in_context_error",
+        "vocabulary_underlined",
+        "vocabulary_usage",
+        "낱말의 쓰임",
+        "문맥상 낱말 선택",
+        "문맥상 낱말 쓰임",
+        "문맥상 낱말의 쓰임 파악",
+        "문맥상 부적절한 어휘를 찾는다",
+        "문맥상 어휘",
+        "문맥상 어휘 적절성 판단하기",
+        "문맥상 적절하지 않은 어휘 고르기",
+        "문맥상 적절한 어휘 파악",
+        "문맥상 적절한 어휘 파악하기",
+        "문맥에 맞는 적절한 어휘 고르기",
+        "문맥에 맞지 않는 낱말을 찾는다.",
+        "문맥에 맞지 않는 어휘 고르기",
+        "문맥에 맞지 않은 어휘 고르기",
+        "어휘 적절성 파악",
+        "어휘 추론",
+        "어휘의 적절성 파악"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "VOC_SNT",
+      "full_name": "Vocabulary - Sentence Synonym",
+      "korean": "단일 문장 동의어",
+      "description": "한 문장의 밑줄 단어와 가장 가까운 뜻",
+      "parent": null,
+      "category": "VOC",
+      "aliases": [
+        "VOC_SYN",
+        "vocabulary_synonym",
+        "동의어",
+        "동의어 선택"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "VOC_CTX",
+      "full_name": "Vocabulary - Context Combination",
+      "korean": "문맥 어휘 조합",
+      "description": "(A)(B)(C) 네모 안 단어 조합",
+      "parent": null,
+      "category": "VOC",
+      "aliases": [
+        "문맥 어휘",
+        "어휘 조합"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "VOC_WRD",
+      "full_name": "Vocabulary - Word Synonym",
+      "korean": "단어 동의어",
+      "description": "단독 단어의 동의어",
+      "parent": null,
+      "category": "VOC",
+      "aliases": [
+        "word_synonym"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "VOC_DEF",
+      "full_name": "Vocabulary - Definition Matching",
+      "korean": "영영 풀이 매칭",
+      "description": "영영 정의와 단어 매칭",
+      "parent": null,
+      "category": "VOC",
+      "aliases": [
+        "WD",
+        "word_definition",
+        "영영 풀이",
+        "영영풀이"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "VOC_ANL",
+      "full_name": "Vocabulary - Analogy",
+      "korean": "단어 유추",
+      "description": "두 단어의 관계와 유사한 것 (aaa:bbb)",
+      "parent": null,
+      "category": "VOC",
+      "aliases": [
+        "analogy",
+        "단어 유추",
+        "단어 관계"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "IRR",
+      "full_name": "Irrelevant Sentence",
+      "korean": "무관한 문장",
+      "description": "글의 흐름과 무관한 문장 찾기",
+      "parent": null,
+      "category": null,
+      "aliases": [
+        "IR",
+        "irrelevant",
+        "무관 문장",
+        "무관한 문장",
+        "FLOW_IRR",
+        "IRRELEVANT_SENTENCE",
+        "IRREL_SENT",
+        "IRR_SENT",
+        "LP_IRR",
+        "ODD_SENTENCE",
+        "RC_FLOW",
+        "flow_irrelevant_sentence",
+        "irrelevant-sentence",
+        "irrelevant_sentence",
+        "sentence_irrelevance",
+        "unrelated_sentence",
+        "글의 흐름 파악",
+        "글의 흐름 파악하기",
+        "글의 흐름과 무관한 문장 찾기",
+        "글의 흐름과 무관한 문장을 파악한다",
+        "무관한 문장 고르기",
+        "무관한 문장 찾기",
+        "무관한 문장 파악",
+        "흐름과 관계없는 문장"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "IRR_DLG",
+      "full_name": "Irrelevant Dialogue",
+      "korean": "대화 흐름 부적절",
+      "description": "여러 대화 보기 중 흐름상 부적절한 대화를 고르는 유형",
+      "parent": "IRR",
+      "category": null,
+      "aliases": [
+        "dialogue_flow_error",
+        "inappropriate_dialogue",
+        "대화 흐름 부적절"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "SUM",
+      "full_name": "Summary Completion",
+      "korean": "요약문 완성",
+      "description": "요약문의 빈칸 (A)(B)에 들어갈 말",
+      "parent": null,
+      "category": null,
+      "aliases": [
+        "SC",
+        "summary",
+        "요약",
+        "요약문",
+        "LP_SUM",
+        "RC_SUMMARY",
+        "SM",
+        "SUMMARY",
+        "SUMMARY_BLANK",
+        "SUMMARY_COMPLETION",
+        "summary-blank",
+        "summary-completion",
+        "summary_blank",
+        "summary_completion",
+        "글의 내용 요약",
+        "글의 내용 요약하기",
+        "글의 요약문을 완성한다",
+        "문단 요약",
+        "요약문 완성",
+        "요약문 완성하기"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "MNI_TPC",
+      "full_name": "Main Idea - Topic",
+      "korean": "주제",
+      "description": "글의 주제로 가장 적절한 것",
+      "parent": null,
+      "category": "MNI",
+      "aliases": [
+        "MI_TPC",
+        "topic",
+        "주제",
+        "LP_TOPIC",
+        "RC_TOPIC",
+        "RP_TOPIC",
+        "TOPIC",
+        "main-topic",
+        "topic-inference",
+        "글의 주제",
+        "글의 주제 추론",
+        "글의 주제 추론하기",
+        "글의 주제 파악",
+        "글의 주제 파악하기",
+        "글의 주제를 추론한다",
+        "주제 추론",
+        "주제 파악"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "MNI_TIT",
+      "full_name": "Main Idea - Title",
+      "korean": "제목",
+      "description": "글의 제목으로 가장 적절한 것",
+      "parent": null,
+      "category": "MNI",
+      "aliases": [
+        "MI_TIT",
+        "title",
+        "제목",
+        "RC_TITLE",
+        "RC_TITLE_INFERENCE",
+        "RP_TIT",
+        "RP_TITLE",
+        "TITLE",
+        "shared_title",
+        "title-inference",
+        "title_inference",
+        "글의 제목",
+        "글의 제목 추론",
+        "글의 제목 추론하기",
+        "글의 제목 파악",
+        "글의 제목 파악하기",
+        "글의 제목을 추론한다",
+        "제목 추론"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "MNI_GST",
+      "full_name": "Main Idea - Gist",
+      "korean": "요지",
+      "description": "글의 요지로 가장 적절한 것",
+      "parent": null,
+      "category": "MNI",
+      "aliases": [
+        "MI_GI",
+        "gist",
+        "요지",
+        "GIST",
+        "LP_GIST",
+        "RC_MAIN_POINT",
+        "RP_GIST",
+        "RP_MAIN_POINT",
+        "main-idea",
+        "main-point",
+        "main_idea",
+        "main_point",
+        "글의 요지",
+        "글의 요지 추론",
+        "글의 요지 추론하기",
+        "글의 요지 파악",
+        "글의 요지 파악하기",
+        "글의 요지를 추론한다",
+        "요지 추론",
+        "요지 파악"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "MNI_CLM",
+      "full_name": "Main Idea - Claim",
+      "korean": "주장",
+      "description": "필자의 주장으로 가장 적절한 것",
+      "parent": null,
+      "category": "MNI",
+      "aliases": [
+        "MI_CL",
+        "claim",
+        "주장",
+        "ARG",
+        "CLAIM",
+        "LP_ARG",
+        "RC_ARGUMENT",
+        "argument",
+        "assertion",
+        "claim-inference",
+        "주장 파악",
+        "필자 주장",
+        "필자 주장 파악",
+        "필자의 주장",
+        "필자의 주장 추론",
+        "필자의 주장 파악",
+        "필자의 주장 파악하기",
+        "필자의 주장을 추론한다"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "PUR",
+      "full_name": "Purpose",
+      "korean": "글의 목적",
+      "description": "필자가 글을 쓴 목적",
+      "parent": null,
+      "category": null,
+      "aliases": [
+        "PP",
+        "purpose",
+        "목적",
+        "LP_PUR",
+        "MNI_PUR",
+        "PURPOSE",
+        "RC_PURPOSE",
+        "purpose-inference",
+        "글의 목적",
+        "글의 목적 고르기",
+        "글의 목적 추론",
+        "글의 목적 추론하기",
+        "글의 목적 파악",
+        "글의 목적 파악하기",
+        "글의 목적을 추론한다",
+        "목적 파악"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "MOD",
+      "full_name": "Mood",
+      "korean": "심경/분위기",
+      "description": "등장인물의 심경 또는 글의 분위기",
+      "parent": null,
+      "category": null,
+      "aliases": [
+        "MD",
+        "mood",
+        "심경",
+        "분위기",
+        "EMO",
+        "EMOTION",
+        "EMOTION_CHANGE",
+        "LP_FEEL",
+        "MNI_EMO",
+        "MOOD",
+        "RC_EMOTION_CHANGE",
+        "emotion",
+        "emotion-change",
+        "emotion-change-inference",
+        "emotion_change",
+        "emotional-change",
+        "emotional_change",
+        "mood-change",
+        "mood_change",
+        "등장인물의 심경 변화를 추론한다",
+        "심경 변화",
+        "심경 변화 고르기",
+        "심경 변화 추론하기",
+        "심경 변화 파악",
+        "심경 변화 파악하기",
+        "심경 추론",
+        "심경 파악하기",
+        "인물의 심경 변화 추론",
+        "주인공의 심경 변화 추론하기",
+        "주인공의 심경 추론"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "IMP",
+      "full_name": "Implication",
+      "korean": "함축 의미",
+      "description": "밑줄 친 부분의 함축 의미",
+      "parent": null,
+      "category": null,
+      "aliases": [
+        "IM",
+        "implication",
+        "함축",
+        "함축 의미",
+        "IMPLIED_MEANING",
+        "LP_UND",
+        "MNI_UNL",
+        "RC_IMPLIED_MEANING",
+        "UNDERLINE_MEANING",
+        "implied-meaning",
+        "implied-meaning-inference",
+        "implied_meaning",
+        "meaning-in-context",
+        "meaning_in_context",
+        "phrase_meaning",
+        "underline_meaning",
+        "underlined_meaning",
+        "underlined_phrase_meaning",
+        "밑줄 의미",
+        "어구 의미",
+        "어구의 함축 의미를 추론한다",
+        "어구의 함축적 의미 추론",
+        "어구의 함축적 의미 파악",
+        "어구의 함축적 의미 파악하기",
+        "함축 의미 추론",
+        "함축 의미 추론하기",
+        "함축적 의미",
+        "함축적 의미 파악하기"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "CON",
+      "full_name": "Content Check",
+      "korean": "내용 일치/불일치",
+      "description": "글의 내용과 일치하거나 일치하지 않는 것",
+      "parent": null,
+      "category": null,
+      "aliases": [
+        "CC",
+        "content_check",
+        "내용 일치",
+        "내용 불일치",
+        "CONTENT_INCORRECT",
+        "DETAIL",
+        "DETAIL_FALSE",
+        "comprehension",
+        "content",
+        "content-incorrect",
+        "content-inference",
+        "content_detail",
+        "content_inconsistency",
+        "content_incorrect",
+        "detail",
+        "detail-comprehension",
+        "detail-except",
+        "detail-false",
+        "detail-negative",
+        "detail_comprehension",
+        "detail_false",
+        "detail_incorrect",
+        "detail_negative",
+        "shared_detail_negative",
+        "글의 세부 내용 파악",
+        "글의 세부 내용 파악하기",
+        "글의 세부 내용을 파악한다",
+        "내용 불일치 파악",
+        "내용 일치/불일치",
+        "세부 내용",
+        "세부 내용 파악",
+        "세부 내용 파악하기"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "PAIR_MATCH",
+      "full_name": "Pair Match",
+      "korean": "복합 보기 조합 선택",
+      "description": "(a)-(d) 후보 중 두 개 이상을 조합한 선지를 고르는 유형",
+      "parent": null,
+      "category": null,
+      "aliases": [
+        "COMBO_SELECT",
+        "candidate_pair_match",
+        "보기 조합",
+        "복합 보기"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "CHT",
+      "full_name": "Chart",
+      "korean": "도표",
+      "description": "도표/그래프의 내용과 일치/불일치",
+      "parent": null,
+      "category": null,
+      "aliases": [
+        "CH",
+        "chart",
+        "도표"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "NOT",
+      "full_name": "Notice",
+      "korean": "안내문",
+      "description": "안내문의 내용과 일치/불일치",
+      "parent": null,
+      "category": null,
+      "aliases": [
+        "NT",
+        "notice",
+        "안내문",
+        "실용문"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "QA",
+      "full_name": "Question Answerable",
+      "korean": "답할 수 있는 질문",
+      "description": "글을 읽고 답할 수 있는/없는 질문",
+      "parent": null,
+      "category": null,
+      "aliases": [
+        "question_answerable",
+        "답할 수 있는 질문",
+        "질문"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "LPS_TIT",
+      "full_name": "Long Passage - Title",
+      "korean": "장문 제목",
+      "description": "장문 세트의 제목 문항",
+      "parent": null,
+      "category": "LPS",
+      "aliases": [
+        "LP_TIT",
+        "lp_title",
+        "1지문 2문항(글의 제목)",
+        "LP_SET_TIT",
+        "long-passage-title",
+        "shared_passage_title",
+        "장문 제목",
+        "장문 제목 추론",
+        "장문(제목 추론)"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "LPS_VOC",
+      "full_name": "Long Passage - Vocabulary",
+      "korean": "장문 어휘",
+      "description": "장문 세트의 어휘 문항",
+      "parent": null,
+      "category": "LPS",
+      "aliases": [
+        "LP_VOC",
+        "lp_vocabulary",
+        "1지문 2문항(낱말의 쓰임)",
+        "LP_SET_VO",
+        "LP_VO",
+        "long-passage-vocab-context",
+        "shared_passage_vocabulary",
+        "장문 문맥 속의 어휘 추론",
+        "장문 어휘",
+        "장문(문맥 속의 어휘 추론)"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "LPS_SEQ",
+      "full_name": "Long Passage - Sequence",
+      "korean": "장문 순서",
+      "description": "장문 세트의 순서 문항",
+      "parent": null,
+      "category": "LPS",
+      "aliases": [
+        "LP_SQ",
+        "lp_sequence",
+        "1지문 3문항(글의 순서 파악하기)",
+        "1지문 3문항(글의 순서)",
+        "LP_ORD",
+        "LP_SET_ORD",
+        "long-passage-ordering",
+        "shared_passage_ordering",
+        "장문 글의 순서 파악",
+        "장문(글의 순서 파악)"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "LPS_REF",
+      "full_name": "Long Passage - Reference",
+      "korean": "장문 지칭",
+      "description": "장문 세트의 지칭 추론 문항",
+      "parent": null,
+      "category": "LPS",
+      "aliases": [
+        "LP_RF",
+        "lp_reference",
+        "1지문 3문항(지칭 추론)",
+        "1지문 3문항(지칭 추론하기)",
+        "LP_REF",
+        "LP_SET_REF",
+        "REF",
+        "REFERENCE",
+        "long-passage-reference",
+        "pronoun",
+        "reference-inference",
+        "reference-resolution",
+        "reference_resolution",
+        "referent",
+        "shared_passage_reference",
+        "shared_reference",
+        "가리키는 대상이 다른 것을 찾는다",
+        "장문 지칭 추론",
+        "장문(지칭 추론)",
+        "지칭 대상 추론",
+        "지칭 대상 추론하기",
+        "지칭 대상 파악",
+        "지칭 추론",
+        "지칭하는 대상 파악",
+        "지칭하는 대상 파악하기"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "LPS_CON",
+      "full_name": "Long Passage - Content",
+      "korean": "장문 내용 일치",
+      "description": "장문 세트의 내용 일치 문항",
+      "parent": null,
+      "category": "LPS",
+      "aliases": [
+        "LP_CC",
+        "lp_content",
+        "1지문 3문항(세부 내용 파악하기)",
+        "1지문 3문항(세부 내용)",
+        "LP_DET",
+        "LP_DTL",
+        "LP_SET_DET",
+        "long-passage-content",
+        "shared_passage_detail",
+        "장문 세부적 사실 파악",
+        "장문(세부적 사실 파악)"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "LST_PUR",
+      "full_name": "Listening - Purpose",
+      "korean": "듣기 목적",
+      "parent": null,
+      "category": "LST",
+      "aliases": [
+        "L_PP",
+        "listening_purpose",
+        "듣기 목적"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "LST_OPN",
+      "full_name": "Listening - Opinion",
+      "korean": "듣기 의견",
+      "parent": null,
+      "category": "LST",
+      "aliases": [
+        "L_OP",
+        "listening_opinion",
+        "듣기 의견"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "LST_LOC",
+      "full_name": "Listening - Location/Relation",
+      "korean": "듣기 장소/관계",
+      "parent": null,
+      "category": "LST",
+      "aliases": [
+        "L_MP",
+        "listening_location",
+        "듣기 장소"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "LST_VIS",
+      "full_name": "Listening - Visual",
+      "korean": "듣기 그림 일치",
+      "description": "그림과 대화 내용의 일치/불일치",
+      "parent": null,
+      "category": "LST",
+      "aliases": [
+        "L_VIS",
+        "listening_visual",
+        "듣기 그림"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "LST_RSP",
+      "full_name": "Listening - Response",
+      "korean": "듣기 응답",
+      "description": "할 일/요청/적절한 응답",
+      "parent": null,
+      "category": "LST",
+      "aliases": [
+        "L_RSP",
+        "listening_response",
+        "듣기 응답",
+        "적절한 응답"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "LST_AMT",
+      "full_name": "Listening - Amount",
+      "korean": "듣기 금액/수량",
+      "parent": null,
+      "category": "LST",
+      "aliases": [
+        "L_AMT",
+        "listening_amount",
+        "듣기 금액"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "LST_RSN",
+      "full_name": "Listening - Reason",
+      "korean": "듣기 이유",
+      "parent": null,
+      "category": "LST",
+      "aliases": [
+        "L_RSN",
+        "listening_reason",
+        "듣기 이유"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "LST_NMT",
+      "full_name": "Listening - Not Mentioned",
+      "korean": "듣기 언급되지 않은 것",
+      "parent": null,
+      "category": "LST",
+      "aliases": [
+        "L_NM",
+        "listening_not_mentioned",
+        "듣기 언급"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "LST_CON",
+      "full_name": "Listening - Content Check",
+      "korean": "듣기 내용 일치",
+      "parent": null,
+      "category": "LST",
+      "aliases": [
+        "L_CC",
+        "listening_content",
+        "듣기 일치"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "LST_CHT",
+      "full_name": "Listening - Chart",
+      "korean": "듣기 도표 일치",
+      "description": "표 보면서 대화 내용 일치",
+      "parent": null,
+      "category": "LST",
+      "aliases": [
+        "L_CHR",
+        "listening_chart",
+        "듣기 도표"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "LST_SET",
+      "full_name": "Listening - Set",
+      "korean": "듣기 세트",
+      "description": "듣기 세트 문항 (예: 16-17)",
+      "parent": null,
+      "category": "LST",
+      "aliases": [
+        "L_SET",
+        "listening_set",
+        "듣기 세트"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "ANL",
+      "full_name": "Analogy",
+      "korean": "유추",
+      "description": "단어/문장 관계 유추 (단독 출제)",
+      "parent": null,
+      "category": null,
+      "aliases": [
+        "유추"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "OEQ_BLK",
+      "full_name": "Open-Ended - Blank",
+      "korean": "서답형 빈칸",
+      "description": "객관식 아닌 빈칸 채우기",
+      "parent": null,
+      "category": "OEQ",
+      "aliases": [
+        "open_ended_blank",
+        "서답형 빈칸"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "OEQ_ANS",
+      "full_name": "Open-Ended - Short Answer",
+      "korean": "단답형",
+      "description": "특정 정보를 단어/구로 답",
+      "parent": null,
+      "category": "OEQ",
+      "aliases": [
+        "short_answer",
+        "단답형",
+        "단답"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "OEQ_SUM",
+      "full_name": "Open-Ended - Summary",
+      "korean": "서답형 요약",
+      "description": "글을 직접 요약하여 작성",
+      "parent": null,
+      "category": "OEQ",
+      "aliases": [
+        "open_ended_summary",
+        "서답형 요약",
+        "요약 작성"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "OEQ_TRN",
+      "full_name": "Open-Ended - Translation",
+      "korean": "번역",
+      "description": "한국어↔영어 번역 답안",
+      "parent": null,
+      "category": "OEQ",
+      "aliases": [
+        "translation",
+        "번역",
+        "영작"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "OEQ_REW",
+      "full_name": "Open-Ended - Rewrite",
+      "korean": "재작성",
+      "description": "주어진 단어/구로 문장 재구성",
+      "parent": null,
+      "category": "OEQ",
+      "aliases": [
+        "rewrite",
+        "재작성",
+        "재배열"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "OEQ_ESS",
+      "full_name": "Open-Ended - Essay",
+      "korean": "작문",
+      "description": "에세이/단락 글쓰기",
+      "parent": null,
+      "category": "OEQ",
+      "aliases": [
+        "essay",
+        "writing",
+        "작문",
+        "에세이",
+        "WRT",
+        "WRT_ESS"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "OEQ_QA",
+      "full_name": "Open-Ended - Question Answer",
+      "korean": "서답형 질의응답",
+      "description": "지문 기반 질문에 직접 답안 작성",
+      "parent": null,
+      "category": "OEQ",
+      "aliases": [
+        "open_ended_qa",
+        "서답형 질의응답"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "OEQ_GRM",
+      "full_name": "Open-Ended - Grammar Correction",
+      "korean": "서답형 어법 고치기",
+      "description": "밑줄 친 어법 오류를 직접 고쳐 쓰기",
+      "parent": null,
+      "category": "OEQ",
+      "aliases": [
+        "grammar_correction",
+        "어법 고치기",
+        "어법 수정"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "GRM_MULTI",
+      "full_name": "Grammar - Multiple Error Selection",
+      "korean": "복수 선택 어법",
+      "description": "본문의 짧은 어법 구 여러 개 중 오류를 모두 또는 정해진 개수만큼 고르는 유형",
+      "parent": "GRM",
+      "category": null,
+      "aliases": [
+        "grammar_multiple_error",
+        "multiple_grammar",
+        "복수 어법"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "CON_CNT",
+      "full_name": "Content Check - Correct Statement Count",
+      "korean": "옳은 진술 개수",
+      "description": "복수 진술 중 옳은 진술의 개수를 고르는 유형",
+      "parent": "CON",
+      "category": null,
+      "aliases": [
+        "content_count",
+        "correct_statement_count",
+        "옳은 진술 개수"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "APL_CPT",
+      "full_name": "Application - Concept to Scenario",
+      "korean": "개념 사례 적용",
+      "description": "본문의 핵심 개념을 독립된 외부 사례에 적용하는 유형",
+      "parent": null,
+      "category": null,
+      "aliases": [
+        "application_concept_scenario",
+        "concept_application",
+        "개념 사례 적용"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "APL_CMB",
+      "full_name": "Application - Concept Statement Combination",
+      "korean": "개념 적용 보기 조합",
+      "description": "본문의 개념을 복수 보기 진술에 적용하고 해당 진술 조합을 고르는 유형",
+      "parent": "APL_CPT",
+      "category": null,
+      "aliases": [
+        "application_concept_combination",
+        "concept_statement_combination",
+        "개념 적용 조합"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "VOC_PSG_SYN",
+      "full_name": "Vocabulary - Passage Single-word Synonym",
+      "korean": "문단 속 한 단어 동의어",
+      "description": "여러 문장 문단의 표적 단어 하나에 대한 문맥상 동의어를 고르는 유형",
+      "parent": null,
+      "category": "VOC",
+      "aliases": [
+        "passage_single_word_synonym",
+        "passage_word_synonym",
+        "문단 속 단어 동의어"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "VOC_XWD",
+      "full_name": "Vocabulary - Crossword Constraint",
+      "korean": "크로스워드 어휘 판별",
+      "description": "가로·세로 단서와 교차 글자 제약을 만족하지 않는 어휘를 고르는 유형",
+      "parent": null,
+      "category": "VOC",
+      "aliases": [
+        "crossword_vocabulary",
+        "crossword_constraint",
+        "크로스워드 어휘"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "NOT_MULTI",
+      "full_name": "Notice - Dual Practical-text Comparison",
+      "korean": "복수 실용문 내용 비교",
+      "description": "독립된 실용문 두 개의 내용을 비교하는 유형",
+      "parent": "NOT",
+      "category": null,
+      "aliases": [
+        "notice_dual_comparison",
+        "dual_notice_comparison",
+        "복수 실용문 비교"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "VOC_REPL",
+      "full_name": "Vocabulary - Contextual Replacement Pair",
+      "korean": "문맥 어휘 대체 표현",
+      "description": "본문의 밑줄 표현과 대체 표현의 짝 중 문맥상 부적절한 것을 고르는 유형",
+      "parent": null,
+      "category": "VOC",
+      "aliases": [
+        "contextual_replacement_pair",
+        "vocabulary_replacement_pair",
+        "문맥 어휘 대체"
+      ],
+      "status": "registered"
+    },
+    {
+      "code": "INF_CMB_MULTI",
+      "full_name": "Inference - Cross-Passage Combination",
+      "korean": "복수 지문 결합 추론",
+      "description": "복수 지문에서 추론할 수 없는 진술을 모두 고르는 복수정답 유형",
+      "parent": null,
+      "category": null,
+      "aliases": [
+        "inference_combination_multiple",
+        "cross_passage_inference",
+        "복수 지문 결합 추론"
+      ],
+      "status": "registered"
+    }
+  ],
+  "augmentation": {
+    "observed_from": "(내부 경로 제거됨)",
+    "observed_item_count": 3847,
+    "observed_problem_type_count": 443,
+    "new_registered_codes": [
+      "GRM_MULTI",
+      "CON_CNT",
+      "APL_CPT",
+      "APL_CMB",
+      "VOC_PSG_SYN",
+      "VOC_XWD",
+      "NOT_MULTI",
+      "VOC_REPL",
+      "INF_CMB_MULTI"
+    ],
+    "unclassified_file": "unclassified-problem-types.json"
+  }
+}

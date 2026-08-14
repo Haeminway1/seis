@@ -1,0 +1,15 @@
+# 문서 라이선스 — CC BY 4.0
+
+`README.md`, `spec/`, `profiles/` 의 문서는 Creative Commons Attribution 4.0
+International (CC BY 4.0) 로 배포한다.
+
+    https://creativecommons.org/licenses/by/4.0/
+
+가져다 쓰고, 고쳐 쓰고, 상업적으로 써도 된다. 출처만 밝히면 된다.
+
+코드(`tools/`, `schema/`)와 예시(`examples/`)는 MIT — `LICENSE` 참조.
+
+## 지문에 대하여
+
+`examples/` 의 영어 지문은 이 저장소를 위해 새로 쓴 것이다. 제3자 저작물이 포함되어
+있지 않다. 이 저장소는 어떤 기출 문항이나 외부 지문도 배포하지 않는다.

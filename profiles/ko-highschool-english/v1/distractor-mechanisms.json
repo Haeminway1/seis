@@ -1,0 +1,138 @@
+{
+  "schema_id": "distractor-mechanisms/v1",
+  "status": "approved",
+  "approval": {
+    "approved_by": "Haemin",
+    "approved_at": "2026-08-08",
+    "calibration": "표본 1호 W33-001 전선지 진단 승인, 준정답급 플래그 채택, 표본 2호(외부 기출)로 DM_COUNTER_CLAIM·DM_PLAUSIBLE_UNSTATED 추가",
+    "merge_calibration": {
+      "date": "2026-08-08",
+      "approved_by": "Haemin",
+      "note": "위키 5패턴과 병합 — 뷰어 확정"
+    }
+  },
+  "authority": {
+    "commit": "d240abc76df8391c0f8b293fd6cdcf82b3a3ecde"
+  },
+  "frequent_by_type": {
+    "BLK": [
+      "DM_COUNTER_CLAIM",
+      "DM_TOO_BROAD",
+      "DM_TOO_NARROW"
+    ],
+    "MNI_GST": [
+      "DM_TOO_BROAD",
+      "DM_TOO_NARROW"
+    ],
+    "MNI_TIT": [
+      "DM_TOO_BROAD",
+      "DM_TOO_NARROW"
+    ],
+    "IMP": [
+      "DM_COUNTER_CLAIM"
+    ],
+    "IRR": [
+      "DM_LEXICAL_LURE",
+      "DM_PLAUSIBLE_UNSTATED"
+    ],
+    "SEQ": [
+      "DM_PART_WHOLE_CONFUSION",
+      "DM_DETAIL_EXAGGERATION"
+    ],
+    "INS": [
+      "DM_PART_WHOLE_CONFUSION",
+      "DM_DETAIL_EXAGGERATION"
+    ]
+  },
+  "combinations": {
+    "Irrelevant": [
+      "DM_LEXICAL_LURE",
+      "DM_PLAUSIBLE_UNSTATED"
+    ],
+    "Mixed": {
+      "near_correct": true,
+      "note": "틀린 반쪽의 실제 mechanism 태그와 함께 기록하며 별도 태그로 등록하지 않는다."
+    }
+  },
+  "mechanisms": [
+    {
+      "mechanism_id": "DM_LEXICAL_LURE",
+      "name_ko": "표면 어휘 유인",
+      "description_ko": "본문 어휘가 겹치는 선지에 끌림 — 구조 처리 없이 어휘 일치로 선택",
+      "evidence": [
+        "GPA_GEN_CLINIC_01KZ1QEAKM3K27ENDCRTKY3F83_017 선지 ③"
+      ]
+    },
+    {
+      "mechanism_id": "DM_PART_WHOLE_CONFUSION",
+      "name_ko": "부분·전체 혼동",
+      "description_ko": "본문의 한 사례·조건·부분을 글 전체의 주장이나 범위로 확대해 읽음",
+      "evidence": [
+        "GPA_GEN_CLINIC_01KZ1QEAKM3K27ENDCRTKY3F83_001 선지 ④"
+      ]
+    },
+    {
+      "mechanism_id": "DM_DETAIL_EXAGGERATION",
+      "name_ko": "세부정보 과장·왜곡",
+      "description_ko": "본문의 일부 인과·정도·방향을 바꾸거나 과장해 선지의 결론으로 만듦",
+      "evidence": [
+        "GPA_GEN_CLINIC_01KZ1QEAKM3K27ENDCRTKY3F83_002 선지 ③"
+      ]
+    },
+    {
+      "mechanism_id": "DM_SUBJECT_PERSPECTIVE_CONFUSION",
+      "name_ko": "주체(관점) 혼동",
+      "description_ko": "행동의 주체·대상 또는 필자의 관점을 바꾸어 본문과 다른 주체의 판단으로 읽음",
+      "evidence": [
+        "GPA_GEN_GPA_ENGLISH_IMMEDIATE_01KZECWE0X9WGBQEQ912FYFQK4_022 선지 ③"
+      ]
+    },
+    {
+      "mechanism_id": "DM_PLAUSIBLE_UNSTATED",
+      "name_ko": "무언급 그럴듯 진술",
+      "description_ko": "상식적으로 그럴듯하나 본문에 없는 진술을 선택",
+      "evidence": [
+        "GPA_GEN_GPA_ENGLISH_IMMEDIATE_01KZECWE0X9WGBQEQ912FYFQK4_023 선지 ④"
+      ]
+    },
+    {
+      "mechanism_id": "DM_COUNTER_CLAIM",
+      "name_ko": "방향 반전·반박 주장",
+      "description_ko": "(a) 글이 반박·공격한 주장을 정답으로 고르거나, (b) 본문 핵심어는 유지한 채 서술어(동사·형용사)의 방향을 반전해 반대 명제를 선택",
+      "identification_steps": [
+        "핵심어 확인",
+        "서술어 방향",
+        "부정어 위치"
+      ],
+      "evidence": [
+        "GPA_GEN_GPA_ENGLISH_IMMEDIATE_01KZECWE0X9WGBQEQ912FYFQK4_029 선지 ③"
+      ]
+    },
+    {
+      "mechanism_id": "DM_TOO_BROAD",
+      "name_ko": "과잉 포괄",
+      "description_ko": "주제는 맞지만 선지의 범위가 지문을 초과하는 상위 개념·과잉 일반화를 선택",
+      "status": "approved",
+      "evidence": [
+        "GPA_GEN_GPA_ENGLISH_IMMEDIATE_01KZECWE0X9WGBQEQ912FYFQK4_018 선지 ⑤"
+      ],
+      "evidence_notes": [
+        "W33 파일럿 요지 선지에서 나이·사회적 역할이라는 주제어는 유지하면서 'always'로 생물학적 나이가 사회적 역할을 결정한다고 전면화해, 지문의 사회 규범 변화·불일치 논지를 넘어선다."
+      ]
+    },
+    {
+      "mechanism_id": "DM_TOO_NARROW",
+      "name_ko": "과잉 지엽",
+      "description_ko": "글 전체가 요구하는 수준에서 예시·세부 수준의 하위 개념을 정답처럼 선택",
+      "aliases": [
+        "DM_EXAMPLE_AS_CLAIM"
+      ],
+      "evidence": [
+        "GPA_GEN_CLINIC_01KZ1QEAKM3K27ENDCRTKY3F83_013 선지 ⑤"
+      ],
+      "evidence_notes": [
+        "기존 DM_EXAMPLE_AS_CLAIM의 근거와 판정 이력을 DM_TOO_NARROW가 승계한다."
+      ]
+    }
+  ]
+}

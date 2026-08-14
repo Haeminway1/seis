@@ -1,0 +1,67 @@
+#!/usr/bin/env python3
+"""seis-validate — SEIS v1 문서 검사 CLI.
+
+의존성 없음(표준 라이브러리만). 참조 구현인 seis_validate.py 의 의미 검증을 그대로
+호출하고, 사람이 읽는 결과와 종료 코드를 붙인다.
+
+    ./tools/seis-validate examples/*.seis.json
+    ./tools/seis-validate exam.json --json
+
+종료 코드: 0 통과 / 1 실패 / 2 파일·JSON 문제
+"""
+import json, sys, argparse
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from seis_validate import validate_seis_v1, SeisSemanticError  # noqa: E402
+
+
+def check(path: Path):
+    try:
+        doc = json.loads(path.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        return False, "파일을 찾을 수 없다", {}
+    except json.JSONDecodeError as e:
+        return False, f"JSON 파싱 실패: 줄 {e.lineno} 칸 {e.colno} — {e.msg}", {}
+    stats = {
+        "items": len(doc.get("items", [])),
+        "passages": len(doc.get("passages", [])),
+        "markers": sum(len(p.get("markers") or []) for p in doc.get("passages", [])),
+        "sources": len(doc.get("sources", [])),
+    }
+    try:
+        validate_seis_v1(doc)
+    except SeisSemanticError as e:
+        return False, str(e), stats
+    except Exception as e:  # 스키마 이전 단계에서 깨진 문서
+        return False, f"{type(e).__name__}: {e}", stats
+    return True, "", stats
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(prog="seis-validate")
+    ap.add_argument("files", nargs="+")
+    ap.add_argument("--json", action="store_true", dest="as_json")
+    a = ap.parse_args()
+
+    results = []
+    for f in a.files:
+        ok, err, stats = check(Path(f))
+        results.append({"path": f, "ok": ok, "error": err, "stats": stats})
+
+    if a.as_json:
+        print(json.dumps(results, ensure_ascii=False, indent=2))
+    else:
+        for r in results:
+            mark = "✓ PASS" if r["ok"] else "✗ FAIL"
+            s = "  ".join(f"{k} {v}" for k, v in r["stats"].items())
+            print(f"{mark}  {r['path']}" + (f"\n       {s}" if s else ""))
+            if not r["ok"]:
+                print(f"  ERROR  {r['error']}\n")
+        if len(results) > 1:
+            print(f"{sum(r['ok'] for r in results)}/{len(results)} 통과")
+    return 0 if all(r["ok"] for r in results) else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

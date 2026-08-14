@@ -1,0 +1,2637 @@
+{
+  "schema_id": "item-type-normalization-map/v1",
+  "policy": {
+    "lookup_key": "value",
+    "target_key": "code",
+    "one_value_one_code": true,
+    "unclassified_values_are_not_mapped": true,
+    "prompt_evidence_used_for_new_aliases": true
+  },
+  "mappings": [
+    {
+      "value": "1지문 2문항(글의 제목)",
+      "code": "LPS_TIT",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "1지문 2문항(낱말의 쓰임)",
+      "code": "LPS_VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "1지문 3문항(글의 순서 파악하기)",
+      "code": "LPS_SEQ",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "1지문 3문항(글의 순서)",
+      "code": "LPS_SEQ",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "1지문 3문항(세부 내용 파악하기)",
+      "code": "LPS_CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "1지문 3문항(세부 내용)",
+      "code": "LPS_CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "1지문 3문항(지칭 추론)",
+      "code": "LPS_REF",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "1지문 3문항(지칭 추론하기)",
+      "code": "LPS_REF",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "APL_CMB",
+      "code": "APL_CMB",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "APL_CPT",
+      "code": "APL_CPT",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "ARG",
+      "code": "MNI_CLM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "BC",
+      "code": "BLK",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "BLANK",
+      "code": "BLK",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "BLANK_COMPLETION",
+      "code": "BLK",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "BLK",
+      "code": "BLK",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "BLK_MULTI",
+      "code": "BLK_MULTI",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "BLK_WRD",
+      "code": "BLK_WRD",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "CLAIM",
+      "code": "MNI_CLM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "CON",
+      "code": "CON",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "CONTENT_INCORRECT",
+      "code": "CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "CON_CNT",
+      "code": "CON_CNT",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "DETAIL",
+      "code": "CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "DETAIL_FALSE",
+      "code": "CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "EMO",
+      "code": "MOD",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "EMOTION",
+      "code": "MOD",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "EMOTION_CHANGE",
+      "code": "MOD",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "FLOW_IRR",
+      "code": "IRR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "GIST",
+      "code": "MNI_GST",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "GR",
+      "code": "GRM",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "GRAMMAR",
+      "code": "GRM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "GRAMMAR_UNDERLINE",
+      "code": "GRM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "GRM",
+      "code": "GRM",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "GRM_MULTI",
+      "code": "GRM_MULTI",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "IM",
+      "code": "IMP",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "IMP",
+      "code": "IMP",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "IMPLIED_MEANING",
+      "code": "IMP",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "INF_CMB_MULTI",
+      "code": "INF_NEG_MULTI",
+      "basis": "registered_code",
+      "confidence": "high",
+      "prior_code": "INF_CMB_MULTI"
+    },
+    {
+      "value": "INS",
+      "code": "INS",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "INSERTION",
+      "code": "INS",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "IR",
+      "code": "IRR",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "IRR",
+      "code": "IRR",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "IRRELEVANT_SENTENCE",
+      "code": "IRR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "IRREL_SENT",
+      "code": "IRR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "IRR_SENT",
+      "code": "IRR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "IS",
+      "code": "INS",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "LPS_CON",
+      "code": "LPS_CON",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "LPS_REF",
+      "code": "LPS_REF",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "LPS_SEQ",
+      "code": "LPS_SEQ",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "LPS_TIT",
+      "code": "LPS_TIT",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "LPS_VOC",
+      "code": "LPS_VOC",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "LP_ARG",
+      "code": "MNI_CLM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "LP_BLK",
+      "code": "BLK",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "LP_CC",
+      "code": "LPS_CON",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "LP_DET",
+      "code": "LPS_CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "LP_DTL",
+      "code": "LPS_CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "LP_FEEL",
+      "code": "MOD",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "LP_GIST",
+      "code": "MNI_GST",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "LP_GRM",
+      "code": "GRM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "LP_INS",
+      "code": "INS",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "LP_IRR",
+      "code": "IRR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "LP_ORD",
+      "code": "LPS_SEQ",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "LP_PUR",
+      "code": "PUR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "LP_REF",
+      "code": "LPS_REF",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "LP_RF",
+      "code": "LPS_REF",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "LP_SET_DET",
+      "code": "LPS_CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "LP_SET_ORD",
+      "code": "LPS_SEQ",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "LP_SET_REF",
+      "code": "LPS_REF",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "LP_SET_TIT",
+      "code": "LPS_TIT",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "LP_SET_VO",
+      "code": "LPS_VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "LP_SQ",
+      "code": "LPS_SEQ",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "LP_SUM",
+      "code": "SUM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "LP_TIT",
+      "code": "LPS_TIT",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "LP_TOPIC",
+      "code": "MNI_TPC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "LP_UND",
+      "code": "IMP",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "LP_VO",
+      "code": "LPS_VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "LP_VOC",
+      "code": "LPS_VOC",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "MD",
+      "code": "MOD",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "MI_CL",
+      "code": "MNI_CLM",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "MI_GI",
+      "code": "MNI_GST",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "MI_TIT",
+      "code": "MNI_TIT",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "MI_TPC",
+      "code": "MNI_TPC",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "MNI_CLM",
+      "code": "MNI_CLM",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "MNI_EMO",
+      "code": "MOD",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "MNI_GST",
+      "code": "MNI_GST",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "MNI_PUR",
+      "code": "PUR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "MNI_TIT",
+      "code": "MNI_TIT",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "MNI_TPC",
+      "code": "MNI_TPC",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "MNI_UNL",
+      "code": "IMP",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "MOD",
+      "code": "MOD",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "MOOD",
+      "code": "MOD",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "NOT",
+      "code": "CON_NEG",
+      "basis": "registered_code",
+      "confidence": "high",
+      "prior_code": "NOT"
+    },
+    {
+      "value": "NOT_MULTI",
+      "code": "CON_NEG",
+      "basis": "registered_code",
+      "confidence": "high",
+      "prior_code": "NOT_MULTI"
+    },
+    {
+      "value": "ODD_SENTENCE",
+      "code": "IRR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "OEQ_TRN",
+      "code": "OEQ_TRN",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "ORD",
+      "code": "SEQ",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "ORDER",
+      "code": "SEQ",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "ORDERING",
+      "code": "SEQ",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "PAIR_MATCH",
+      "code": "PAIR_MATCH",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "PP",
+      "code": "PUR",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "PUR",
+      "code": "PUR",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "PURPOSE",
+      "code": "PUR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "QA",
+      "code": "QA",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "RC_ARGUMENT",
+      "code": "MNI_CLM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "RC_BC",
+      "code": "BLK",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "RC_BLANK",
+      "code": "BLK",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "RC_EMOTION_CHANGE",
+      "code": "MOD",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "RC_FLOW",
+      "code": "IRR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "RC_GR",
+      "code": "GRM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "RC_IMPLIED_MEANING",
+      "code": "IMP",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "RC_INSERT",
+      "code": "INS",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "RC_MAIN_POINT",
+      "code": "MNI_GST",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "RC_ORDER",
+      "code": "SEQ",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "RC_PURPOSE",
+      "code": "PUR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "RC_SUMMARY",
+      "code": "SUM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "RC_TITLE",
+      "code": "MNI_TIT",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "RC_TITLE_INFERENCE",
+      "code": "MNI_TIT",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "RC_TOPIC",
+      "code": "MNI_TPC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "RC_VO",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "RC_VOCAB",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "RC_VOCAB_USAGE",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "REF",
+      "code": "LPS_REF",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "REFERENCE",
+      "code": "LPS_REF",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "RP_GIST",
+      "code": "MNI_GST",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "RP_MAIN_POINT",
+      "code": "MNI_GST",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "RP_TIT",
+      "code": "MNI_TIT",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "RP_TITLE",
+      "code": "MNI_TIT",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "RP_TOPIC",
+      "code": "MNI_TPC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "RP_VO",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "SC",
+      "code": "SUM",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "SENTENCE_INSERT",
+      "code": "INS",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "SENTENCE_INSERTION",
+      "code": "INS",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "SENT_POS",
+      "code": "INS",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "SEQ",
+      "code": "SEQ",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "SI",
+      "code": "INS",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "SM",
+      "code": "SUM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "SQ",
+      "code": "SEQ",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "SUM",
+      "code": "SUM",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "SUMMARY",
+      "code": "SUM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "SUMMARY_BLANK",
+      "code": "SUM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "SUMMARY_COMPLETION",
+      "code": "SUM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "TITLE",
+      "code": "MNI_TIT",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "TOPIC",
+      "code": "MNI_TPC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "UNDERLINE_MEANING",
+      "code": "IMP",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "VO",
+      "code": "VOC",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "VOC",
+      "code": "VOC",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "VOCAB_CONTEXT",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "VOC_CTX",
+      "code": "VOC_CTX",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "VOC_PSG_SYN",
+      "code": "VOC_PSG_SYN",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "VOC_REPL",
+      "code": "VOC_REPL",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "VOC_SNT",
+      "code": "VOC_SNT",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "VOC_XWD",
+      "code": "VOC_XWD",
+      "basis": "registered_code",
+      "confidence": "high"
+    },
+    {
+      "value": "argument",
+      "code": "MNI_CLM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "assertion",
+      "code": "MNI_CLM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "blank",
+      "code": "BLK",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "blank-completion",
+      "code": "BLK",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "blank-inference",
+      "code": "BLK",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "blank_completion",
+      "code": "BLK",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "blank_inference",
+      "code": "BLK",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "claim",
+      "code": "MNI_CLM",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "claim-inference",
+      "code": "MNI_CLM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "cloze_inference",
+      "code": "BLK",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "comprehension",
+      "code": "CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "content",
+      "code": "CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "content-incorrect",
+      "code": "CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "content-inference",
+      "code": "CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "content_detail",
+      "code": "CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "content_inconsistency",
+      "code": "CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "content_incorrect",
+      "code": "CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "context-vocabulary",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "context-word-choice",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "context-word-error",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "context-word-usage",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "contextual-vocabulary",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "contextual_vocabulary",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "contextual_vocabulary_error",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "contextual_word_error",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "detail",
+      "code": "CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "detail-comprehension",
+      "code": "CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "detail-except",
+      "code": "CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "detail-false",
+      "code": "CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "detail-negative",
+      "code": "CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "detail_comprehension",
+      "code": "CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "detail_false",
+      "code": "CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "detail_incorrect",
+      "code": "CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "detail_negative",
+      "code": "CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "emotion",
+      "code": "MOD",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "emotion-change",
+      "code": "MOD",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "emotion-change-inference",
+      "code": "MOD",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "emotion_change",
+      "code": "MOD",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "emotional-change",
+      "code": "MOD",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "emotional_change",
+      "code": "MOD",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "flow_irrelevant_sentence",
+      "code": "IRR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "gist",
+      "code": "MNI_GST",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "grammar",
+      "code": "GRM",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "grammar-error",
+      "code": "GRM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "grammar-error-identification",
+      "code": "GRM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "grammar_error",
+      "code": "GRM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "grammar_error_underlined",
+      "code": "GRM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "grammar_incorrect",
+      "code": "GRM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "grammar_underlined",
+      "code": "GRM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "grammar_underlined_error",
+      "code": "GRM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "implication",
+      "code": "IMP",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "implied-meaning",
+      "code": "IMP",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "implied-meaning-inference",
+      "code": "IMP",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "implied_meaning",
+      "code": "IMP",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "inappropriate_word",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "incorrect-word",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "insert_sentence",
+      "code": "INS",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "insertion",
+      "code": "INS",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "irrelevant-sentence",
+      "code": "IRR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "irrelevant_sentence",
+      "code": "IRR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "long-passage-content",
+      "code": "LPS_CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "long-passage-ordering",
+      "code": "LPS_SEQ",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "long-passage-reference",
+      "code": "LPS_REF",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "long-passage-title",
+      "code": "LPS_TIT",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "long-passage-vocab-context",
+      "code": "LPS_VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "main-idea",
+      "code": "MNI_GST",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "main-point",
+      "code": "MNI_GST",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "main-topic",
+      "code": "MNI_TPC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "main_idea",
+      "code": "MNI_GST",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "main_point",
+      "code": "MNI_GST",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "meaning-in-context",
+      "code": "IMP",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "meaning_in_context",
+      "code": "IMP",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "mood",
+      "code": "MOD",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "mood-change",
+      "code": "MOD",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "mood_change",
+      "code": "MOD",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "ordering",
+      "code": "SEQ",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "paragraph_order",
+      "code": "SEQ",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "paragraph_ordering",
+      "code": "SEQ",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "passage_order",
+      "code": "SEQ",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "phrase_meaning",
+      "code": "IMP",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "pronoun",
+      "code": "LPS_REF",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "purpose",
+      "code": "PUR",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "purpose-inference",
+      "code": "PUR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "reference-inference",
+      "code": "LPS_REF",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "reference-resolution",
+      "code": "LPS_REF",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "reference_resolution",
+      "code": "LPS_REF",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "referent",
+      "code": "LPS_REF",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "sentence-insertion",
+      "code": "INS",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "sentence_insertion",
+      "code": "INS",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "sentence_irrelevance",
+      "code": "IRR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "shared_contextual_vocabulary_error",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "shared_detail_negative",
+      "code": "CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "shared_ordering",
+      "code": "SEQ",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "shared_passage_detail",
+      "code": "LPS_CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "shared_passage_ordering",
+      "code": "LPS_SEQ",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "shared_passage_reference",
+      "code": "LPS_REF",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "shared_passage_title",
+      "code": "LPS_TIT",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "shared_passage_vocabulary",
+      "code": "LPS_VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "shared_reference",
+      "code": "LPS_REF",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "shared_title",
+      "code": "MNI_TIT",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "statement_insert",
+      "code": "INS",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "summary",
+      "code": "SUM",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "summary-blank",
+      "code": "SUM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "summary-completion",
+      "code": "SUM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "summary_blank",
+      "code": "SUM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "summary_completion",
+      "code": "SUM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "title",
+      "code": "MNI_TIT",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "title-inference",
+      "code": "MNI_TIT",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "title_inference",
+      "code": "MNI_TIT",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "topic",
+      "code": "MNI_TPC",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "topic-inference",
+      "code": "MNI_TPC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "underline_meaning",
+      "code": "IMP",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "underlined_meaning",
+      "code": "IMP",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "underlined_phrase_meaning",
+      "code": "IMP",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "unrelated_sentence",
+      "code": "IRR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "vocab-context",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "vocabulary",
+      "code": "VOC",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "vocabulary-context",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "vocabulary-in-context",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "vocabulary-in-context-error",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "vocabulary_context",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "vocabulary_context_error",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "vocabulary_in_context",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "vocabulary_in_context_error",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "vocabulary_underlined",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "vocabulary_usage",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "가리키는 대상이 다른 것을 찾는다",
+      "code": "LPS_REF",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 내용 요약",
+      "code": "SUM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 내용 요약하기",
+      "code": "SUM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 목적",
+      "code": "PUR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 목적 고르기",
+      "code": "PUR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 목적 추론",
+      "code": "PUR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 목적 추론하기",
+      "code": "PUR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 목적 파악",
+      "code": "PUR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 목적 파악하기",
+      "code": "PUR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 목적을 추론한다",
+      "code": "PUR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 세부 내용 파악",
+      "code": "CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 세부 내용 파악하기",
+      "code": "CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 세부 내용을 파악한다",
+      "code": "CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 순서",
+      "code": "SEQ",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 순서 배열",
+      "code": "SEQ",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 순서 파악",
+      "code": "SEQ",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 순서 파악하기",
+      "code": "SEQ",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 순서를 파악한다",
+      "code": "SEQ",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 요약문을 완성한다",
+      "code": "SUM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 요지",
+      "code": "MNI_GST",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 요지 추론",
+      "code": "MNI_GST",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 요지 추론하기",
+      "code": "MNI_GST",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 요지 파악",
+      "code": "MNI_GST",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 요지 파악하기",
+      "code": "MNI_GST",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 요지를 추론한다",
+      "code": "MNI_GST",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 제목",
+      "code": "MNI_TIT",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 제목 추론",
+      "code": "MNI_TIT",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 제목 추론하기",
+      "code": "MNI_TIT",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 제목 파악",
+      "code": "MNI_TIT",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 제목 파악하기",
+      "code": "MNI_TIT",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 제목을 추론한다",
+      "code": "MNI_TIT",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 주제",
+      "code": "MNI_TPC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 주제 추론",
+      "code": "MNI_TPC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 주제 추론하기",
+      "code": "MNI_TPC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 주제 파악",
+      "code": "MNI_TPC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 주제 파악하기",
+      "code": "MNI_TPC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 주제를 추론한다",
+      "code": "MNI_TPC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 흐름 파악",
+      "code": "IRR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 흐름 파악하기",
+      "code": "IRR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 흐름과 무관한 문장 찾기",
+      "code": "IRR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "글의 흐름과 무관한 문장을 파악한다",
+      "code": "IRR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "낱말의 쓰임",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "내용 불일치 파악",
+      "code": "CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "내용 일치",
+      "code": "CON",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "내용 일치/불일치",
+      "code": "CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "등장인물의 심경 변화를 추론한다",
+      "code": "MOD",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "목적",
+      "code": "PUR",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "목적 파악",
+      "code": "PUR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "무관한 문장",
+      "code": "IRR",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "무관한 문장 고르기",
+      "code": "IRR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "무관한 문장 찾기",
+      "code": "IRR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "무관한 문장 파악",
+      "code": "IRR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "문단 요약",
+      "code": "SUM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "문맥상 낱말 선택",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "문맥상 낱말 쓰임",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "문맥상 낱말의 쓰임 파악",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "문맥상 부적절한 어휘를 찾는다",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "문맥상 어휘",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "문맥상 어휘 적절성 판단하기",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "문맥상 적절하지 않은 어휘 고르기",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "문맥상 적절한 어휘 파악",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "문맥상 적절한 어휘 파악하기",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "문맥에 맞는 적절한 어휘 고르기",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "문맥에 맞지 않는 낱말을 찾는다.",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "문맥에 맞지 않는 어휘 고르기",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "문맥에 맞지 않은 어휘 고르기",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "문법성 판단",
+      "code": "GRM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "문장 삽입",
+      "code": "INS",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "문장 삽입하기",
+      "code": "INS",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "문장의 위치 파악",
+      "code": "INS",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "문장의 위치 파악하기",
+      "code": "INS",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "밑줄 의미",
+      "code": "IMP",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "빈칸 내용 추론",
+      "code": "BLK",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "빈칸 내용 추론하기",
+      "code": "BLK",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "빈칸 추론",
+      "code": "BLK",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "빈칸 추론하기",
+      "code": "BLK",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "빈칸에 적절한 표현을 추론한다",
+      "code": "BLK",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "빈칸에 적절한 표현을 추론한다.",
+      "code": "BLK",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "세부 내용",
+      "code": "CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "세부 내용 파악",
+      "code": "CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "세부 내용 파악하기",
+      "code": "CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "순서 배열",
+      "code": "SEQ",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "심경",
+      "code": "MOD",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "심경 변화",
+      "code": "MOD",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "심경 변화 고르기",
+      "code": "MOD",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "심경 변화 추론하기",
+      "code": "MOD",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "심경 변화 파악",
+      "code": "MOD",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "심경 변화 파악하기",
+      "code": "MOD",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "심경 추론",
+      "code": "MOD",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "심경 파악하기",
+      "code": "MOD",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "어구 의미",
+      "code": "IMP",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "어구의 함축 의미를 추론한다",
+      "code": "IMP",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "어구의 함축적 의미 추론",
+      "code": "IMP",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "어구의 함축적 의미 파악",
+      "code": "IMP",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "어구의 함축적 의미 파악하기",
+      "code": "IMP",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "어법",
+      "code": "GRM",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "어법 오류 파악",
+      "code": "GRM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "어법상 맞지 않는 표현을 찾는다.",
+      "code": "GRM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "어법상 틀린 것",
+      "code": "GRM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "어법상 틀린 곳 찾기",
+      "code": "GRM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "어법상 틀린 표현 고르기",
+      "code": "GRM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "어법상 틀린 표현을 찾는다",
+      "code": "GRM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "어법성 판단",
+      "code": "GRM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "어법성 판단하기",
+      "code": "GRM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "어휘",
+      "code": "VOC",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "어휘 적절성 파악",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "어휘 추론",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "어휘의 적절성 파악",
+      "code": "VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "요약문",
+      "code": "SUM",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "요약문 완성",
+      "code": "SUM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "요약문 완성하기",
+      "code": "SUM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "요지",
+      "code": "MNI_GST",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "요지 추론",
+      "code": "MNI_GST",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "요지 파악",
+      "code": "MNI_GST",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "인물의 심경 변화 추론",
+      "code": "MOD",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "장문 글의 순서 파악",
+      "code": "LPS_SEQ",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "장문 문맥 속의 어휘 추론",
+      "code": "LPS_VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "장문 세부적 사실 파악",
+      "code": "LPS_CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "장문 어휘",
+      "code": "LPS_VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "장문 제목",
+      "code": "LPS_TIT",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "장문 제목 추론",
+      "code": "LPS_TIT",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "장문 지칭 추론",
+      "code": "LPS_REF",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "장문(글의 순서 파악)",
+      "code": "LPS_SEQ",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "장문(문맥 속의 어휘 추론)",
+      "code": "LPS_VOC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "장문(세부적 사실 파악)",
+      "code": "LPS_CON",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "장문(제목 추론)",
+      "code": "LPS_TIT",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "장문(지칭 추론)",
+      "code": "LPS_REF",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "제목",
+      "code": "MNI_TIT",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "제목 추론",
+      "code": "MNI_TIT",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "주어진 문장 넣기",
+      "code": "INS",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "주어진 문장이 들어갈 위치를 파악한다",
+      "code": "INS",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "주인공의 심경 변화 추론하기",
+      "code": "MOD",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "주인공의 심경 추론",
+      "code": "MOD",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "주장",
+      "code": "MNI_CLM",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "주장 파악",
+      "code": "MNI_CLM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "주제",
+      "code": "MNI_TPC",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "주제 추론",
+      "code": "MNI_TPC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "주제 파악",
+      "code": "MNI_TPC",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "지칭 대상 추론",
+      "code": "LPS_REF",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "지칭 대상 추론하기",
+      "code": "LPS_REF",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "지칭 대상 파악",
+      "code": "LPS_REF",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "지칭 추론",
+      "code": "LPS_REF",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "지칭하는 대상 파악",
+      "code": "LPS_REF",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "지칭하는 대상 파악하기",
+      "code": "LPS_REF",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "필자 주장",
+      "code": "MNI_CLM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "필자 주장 파악",
+      "code": "MNI_CLM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "필자의 주장",
+      "code": "MNI_CLM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "필자의 주장 추론",
+      "code": "MNI_CLM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "필자의 주장 파악",
+      "code": "MNI_CLM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "필자의 주장 파악하기",
+      "code": "MNI_CLM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "필자의 주장을 추론한다",
+      "code": "MNI_CLM",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "함축 의미",
+      "code": "IMP",
+      "basis": "registered_alias",
+      "confidence": "high"
+    },
+    {
+      "value": "함축 의미 추론",
+      "code": "IMP",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "함축 의미 추론하기",
+      "code": "IMP",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "함축적 의미",
+      "code": "IMP",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "함축적 의미 파악하기",
+      "code": "IMP",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    },
+    {
+      "value": "흐름과 관계없는 문장",
+      "code": "IRR",
+      "basis": "observed_prompt",
+      "confidence": "high"
+    }
+  ],
+  "summary": {
+    "mapped_value_count": 434,
+    "mapped_item_count": 3657,
+    "unclassified_value_count": 9,
+    "unclassified_item_count": 190
+  },
+  "changelog": [
+    {
+      "at": "2026-08-15",
+      "by": "seis-cleanup",
+      "note": "접미사 문법 도입: <BASE>[_NEG][_MULTI]. NOT은 무엇의 부정인지 코드에 없어 CON_NEG로. NOT_MULTI는 실물이 단일정답이라 CON_NEG로 흡수(복수정답 실물 확인 시 CON_NEG_MULTI 신설). INF_CMB_MULTI의 CMB(결합지문)는 passage_ids로 알 수 있어 코드에서 제거.",
+      "renames": {
+        "INF_CMB_MULTI → INF_NEG_MULTI": 1,
+        "NOT → CON_NEG": 1,
+        "NOT_MULTI → CON_NEG": 1
+      }
+    }
+  ]
+}

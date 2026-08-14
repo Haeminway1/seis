@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://munjaedang.local/seis/v1/schema.json",
+  "$id": "https://raw.githubusercontent.com/Haeminway1/seis/main/schema/seis-v1.schema.json",
   "title": "SEIS v1 — Standard English Item Schema",
   "description": "Authoritative schema for one English assessment document. Source text is preserved verbatim; markers identify spans by Unicode code-point offsets.",
   "x-seis-invariants": [

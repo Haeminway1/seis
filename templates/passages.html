@@ -1,0 +1,16 @@
+<!doctype html>
+<!-- 지문 모음 — 문항 없이 지문만. 해석·구문 연습, 또는 변형 전 원문 확인용. -->
+<meta charset="utf-8"><title>{{title}}</title>
+<style>{{base_css}}</style>
+<style>
+  :root { --passage-size: 11.5pt; --passage-leading: 2.0; }  /* 필기할 행간 */
+  .psg-head { font-size: 8.5pt; color: var(--ink-soft); letter-spacing: .06em; margin-top: 16px; }
+</style>
+<body><div class="sheet">
+  <header class="head">
+    <div><div class="kind">{{kind}}</div><h1>{{title}}</h1></div>
+    <div class="meta">{{meta}}</div>
+  </header>
+  {{content}}
+  <footer class="foot"><span>{{footer_left}}</span><span>{{footer_right}}</span></footer>
+</div></body>

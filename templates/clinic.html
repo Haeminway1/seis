@@ -1,0 +1,17 @@
+<!doctype html>
+<!-- 오답 클리닉 — 고른 문항만 지문과 함께 다시 낸다. 정답을 지문 안에 채워 보여준다. -->
+<meta charset="utf-8"><title>{{title}}</title>
+<style>{{base_css}}</style>
+<style>
+  :root { --accent: #b91c1c; }
+  .item { border-left: 3px solid var(--accent); padding-left: 10px; margin-bottom: 24px; }
+</style>
+<body><div class="sheet">
+  <header class="head">
+    <div><div class="kind">{{kind}}</div><h1>{{title}}</h1></div>
+    <div class="meta">{{meta}}</div>
+  </header>
+  <div class="namebar"><span>이름</span><span>날짜</span><span>다시 푼 날</span></div>
+  {{content}}
+  <footer class="foot"><span>{{footer_left}}</span><span>{{footer_right}}</span></footer>
+</div></body>

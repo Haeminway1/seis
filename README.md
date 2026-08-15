@@ -109,6 +109,21 @@ SEIS의 가치는 지문 텍스트가 아니라 **구조**에 있다. 그래서 
 
 구조가 맞는지는 스키마가 보고, **말이 되는지는 검증기가 본다.**
 
+## 인쇄물로 뽑기 — seis-templates
+
+검증기는 "맞다"는 것만 알려 주고 손에 쥘 종이를 주지 않는다. SEIS 를 쓰는 일이
+*인쇄 능력을 잃는 일*이 되지 않도록, 조판 참조 구현을 따로 둔다.
+
+**[Haeminway1/seis-templates](https://github.com/Haeminway1/seis-templates)** — 같은
+JSON 하나에서 시험지·연습문제·숙제·교재·클리닉지가 나온다. 의존성 없고, 브라우저에서
+`Ctrl+P` 하면 A4 인쇄물이 된다.
+
+```bash
+./bin/seis-build exam.seis.json --kind exam --theme academy-navy -o out/
+```
+
+마커 조판(빈칸·밑줄·삽입 자리), A4 면 나누기, 정답표·해설면이 들어 있다.
+
 ## 문서
 
 | | |

@@ -132,6 +132,7 @@ JSON 하나에서 시험지·연습문제·숙제·교재·클리닉지가 나�
 | [`schema/seis-v1.schema.json`](schema/seis-v1.schema.json) | 유일한 권위. 불변량 12개 포함 |
 | [`profiles/ko-highschool-english/v1/`](profiles/ko-highschool-english/v1/) | 한국 고등 영어 유형 어휘 |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | 유형 추가·스펙 변경 절차 |
+| [`AGENTS.md`](AGENTS.md) | 자동화 도구·에이전트용 사용 지침 |
 
 ## 라이선스
 
